@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Cabinet Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --color-ink: #1c1c1f;
+  --font-title: "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-sub: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Soft vignette that pulls the eye to the center of the hero pattern */
+.vignette::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 50%, rgb(20 2 5 / 0.45) 100%);
+}
+
+/* Eased fade from the hero pattern into the page gray (many stops = no banding) */
+.hero-fade {
+  background: linear-gradient(
+    to bottom,
+    rgb(28 28 31 / 0) 0.0%,
+    rgb(28 28 31 / 0.013) 6.7%,
+    rgb(28 28 31 / 0.049) 13.3%,
+    rgb(28 28 31 / 0.104) 20.0%,
+    rgb(28 28 31 / 0.175) 26.7%,
+    rgb(28 28 31 / 0.259) 33.3%,
+    rgb(28 28 31 / 0.352) 40.0%,
+    rgb(28 28 31 / 0.45) 46.7%,
+    rgb(28 28 31 / 0.55) 53.3%,
+    rgb(28 28 31 / 0.648) 60.0%,
+    rgb(28 28 31 / 0.741) 66.7%,
+    rgb(28 28 31 / 0.825) 73.3%,
+    rgb(28 28 31 / 0.896) 80.0%,
+    rgb(28 28 31 / 0.951) 86.7%,
+    rgb(28 28 31 / 0.987) 93.3%,
+    rgb(28 28 31 / 1) 100.0%
+  );
+}
