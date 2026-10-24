@@ -9,7 +9,7 @@ function Photo({ photo, className = '' }) {
   if (photo.src) {
     return (
       <img
-        src={photo.src}
+        src={photo.src.startsWith('/') ? import.meta.env.BASE_URL + photo.src.slice(1) : photo.src}
         alt={photo.caption}
         loading="lazy"
         className={`w-full rounded-xl object-cover ${className}`}
