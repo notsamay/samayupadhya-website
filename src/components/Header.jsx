@@ -1,7 +1,14 @@
 import { useScrollHeader } from '../hooks'
 import { profile } from '../content'
 
-const nav = ['timeline', 'projects', 'connect']
+// Links point at the home page so the header also works on the archive page.
+const home = import.meta.env.BASE_URL
+const nav = [
+  { label: 'timeline', href: `${home}#timeline` },
+  { label: 'projects', href: `${home}#projects` },
+  { label: 'archive', href: `${home}archive/` },
+  { label: 'connect', href: `${home}#connect` },
+]
 
 export default function Header() {
   const { atTop, hidden } = useScrollHeader()
@@ -13,7 +20,7 @@ export default function Header() {
       } ${hidden ? '-translate-y-full' : 'translate-y-0'}`}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 text-sm sm:px-8">
-        <a href="#top" className="relative h-5">
+        <a href={`${home}#top`} className="relative h-5">
           <span
             className={`absolute left-0 top-0 whitespace-nowrap font-mono text-xs leading-5 tracking-[0.2em] text-[#f5ead2]/80 transition-opacity duration-300 ${atTop ? 'opacity-100' : 'opacity-0'}`}
           >
@@ -26,13 +33,13 @@ export default function Header() {
           </span>
         </a>
         <nav className="flex items-center gap-6">
-          {nav.map((id) => (
+          {nav.map(({ label, href }) => (
             <a
-              key={id}
-              href={`#${id}`}
+              key={label}
+              href={href}
               className={`hidden transition-colors sm:inline ${atTop ? 'text-[#f5ead2]/80 hover:text-white' : 'text-neutral-400 hover:text-white'}`}
             >
-              {id}
+              {label}
             </a>
           ))}
         </nav>

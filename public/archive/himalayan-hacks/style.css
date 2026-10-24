@@ -1,0 +1,426 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Mono');
+
+/* Reset some default styles */
+body, h1, h2, ul, li, p, h3 {
+    margin: 0;
+    padding: 0;
+    color: #4dff00;
+    
+}
+
+
+
+h1 {
+    letter-spacing: 1vw;
+    line-height: 1vw;
+    margin-top: 7.5vw;
+    font-weight: normal;
+    font-size: 4vw;
+    animation: flash 0.5s infinite; /* Flash every 2 seconds; adjust the time as needed */
+}
+
+h1:hover{
+    transition: moveText 0.3s ease;
+    letter-spacing: 0.25vw;
+    color: red;
+    opacity: 0.5;
+
+}
+h2{
+
+    letter-spacing: 0.15vw;
+   
+
+    line-height: 3.5vw;
+    align-items: center;
+    margin-top: 5vw;
+    margin-bottom: 2vw;
+    font-weight: normal;
+    font-size: 2.25vw;
+}
+h3 {
+  
+    word-wrap: break-word;
+    margin: 0;
+    padding: 0;
+
+    font-weight:normal;
+    text-align: center;
+    font-size: 0.8vw;
+   
+}
+.binary-content {
+    display: block;
+}
+
+
+h3 span.overlay-text {
+    position: relative; /* Set position to relative for the overlay text */
+    color: transparent; /* Make the text transparent */
+    z-index: 1; /* Place the text above the overlay */
+}
+h3::after {
+   
+    animation: moveText 2s linear infinite; /* Add an animation for text movement */
+}
+
+@keyframes moveText {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+/* Apply a background color and text styles to the body */
+body {
+    font-family: 'PT Mono','Courier';
+    background-color: #151515;
+    color: #fff;
+ 
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Style the header */
+
+/* Style the vertical navigation bar */
+nav {
+    position: fixed; /* Set the navigation bar to a fixed position */
+    top: 0; /* Stick it to the top of the screen */
+    left: 0; /* Align it to the left */
+    width: 100%; /* Make it span the entire width */
+    color: #ffff;
+    text-align: center;
+    background-color: #0f0f0f;
+    z-index: 100; /* Ensure it's above other content */
+    height: 4vw;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Center the navigation items horizontally */
+}
+
+nav ul li {
+    margin: 1.5vw 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #4dff00;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    transition: color 0.3s ease;
+    font-size: 1vw;
+}
+
+nav ul li a:hover {
+    color: red; /* Change to your desired hover color */
+    opacity: 0.5;
+}
+
+
+/* Style the main content */
+.landingpage {
+    width: 60vw;
+    color: #fff;
+    margin: 0 auto; /* Center horizontally */
+    letter-spacing: 0.1vw;
+   
+
+    line-height: 1.95vw;
+
+   
+} 
+section {
+
+   
+  
+    border-radius: 5px;
+    box-shadow: 0px 0px 1vw rgba(0, 0, 0, 0.2);
+}
+.binary-content-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Allow the content to wrap to the next line */
+}
+
+.binary-content {
+    word-wrap: break-word;
+    font-weight: normal;
+    text-align: center;
+    font-size: 0.8vw;
+    margin: 0 10px; /* Add margin between binary elements */
+}
+
+
+#home {
+
+    color: #fff;
+    
+    position: relative;
+    overflow: hidden;
+    height: 95vh;
+
+}
+
+#about {
+
+    color: #fff;
+    
+    position: relative;
+    overflow: hidden;
+    height: 95vh;
+
+}
+
+#timeline {
+
+    color: #fff;
+    
+    position: relative;
+    overflow: hidden;
+    height: 125vh;
+
+}
+p{
+    font-size: 1.5vw;
+    
+}
+.hover-text-box {
+    transition: opacity 0.3s ease; 
+}
+
+
+.hover-text-box.translated {
+    opacity: 1; /* Change the opacity to 1 (visible) when translated */
+}
+
+.buttons{
+    padding-top: 2vw;
+    display: flex;
+    justify-content: left; /* Center the navigation items horizontally */
+    gap: 3vw;
+
+    
+}
+.outline-button {
+    
+    font-family: 'PT Mono','Courier';
+    background-color: #151515; /* Make the background transparent for outline buttons */
+    color: #4dff00; /* Set text color */
+    border: 1px solid #151515; /* Add an outline to the button */
+    font-size: 1.5vw;
+    position: absolute;
+    font-size: 1.75vw;
+
+ 
+
+    padding: 0.5vw;
+    
+
+   
+}
+
+
+#contact{
+    height: 70vh;
+
+}
+h2:hover{
+    color: red;
+    opacity: 0.5;
+}
+
+h3:hover{
+    color: red;
+    opacity: 0.5;
+}
+
+.footer{
+    font-size: 1vw;
+    justify-content: right;
+}
+
+.filled-button {
+    margin-left: 4.5vw;
+ 
+    font-family: 'PT Mono','Courier';
+    background-color: #151515; /* Set background color for filled button */
+    color: #4dff00; /* Set text color for filled button */
+    border: 0.2vw dotted #4dff00; /* Add an outline to the button */
+    font-size: 1.75vw;
+
+    padding: 0.5vw;
+
+}
+.button-link {
+    display: inline-block;
+    width: auto; /* Adjust the width as needed */
+    height: auto; /* Adjust the height as needed */
+    text-decoration: none; /* Remove underline for the anchor link */
+
+}
+
+
+.filled-button:hover{
+  
+    font-size: 1.75vw;
+    opacity: 0.5;
+    color: red;
+    border: 0.2vw dotted red; /* Add an outline to the button */
+}
+.outline-button:hover{
+
+    font-size: 1.75vw;
+    opacity: 0.5;
+    color: red;
+}
+html {
+    scroll-behavior: smooth;
+  }
+
+  @media screen and (max-width: 1000px) {
+
+    h1 {
+        letter-spacing: 0.5vw;
+        line-height: 13vw;
+        margin-top: 10vh;
+        font-weight: normal;
+        font-size: 7vh;
+        animation: flash 0.5s infinite; /* Flash every 2 seconds; adjust the time as needed */
+
+    }
+    
+
+    h2{
+    
+        letter-spacing: 0.15vw;
+       
+    
+        line-height: 8.5vw;
+        align-items: center;
+        margin-top: 5vw;
+        margin-bottom: 2vw;
+        font-weight: normal;
+        font-size: 4vh;
+    }
+    h3 {
+      
+        word-wrap: break-word;
+        margin: 0;
+        padding: 0;
+    
+        font-weight:normal;
+        text-align: center;
+        font-size: 2vh;
+       
+    }
+    p{
+
+        margin-top: 2vh;
+        font-size: 2.5vh;
+        
+     line-height: 3vh;
+        
+    }
+    .footer{
+        font-size: 2vh;
+        justify-content: right;
+    }
+
+    .filled-button {
+        margin-left: 15vw;
+     
+        font-size: 4vh;
+    
+        padding: 0.5vw;
+        border: 0.5vh dotted #4dff00; /* Add an outline to the button */
+    
+    }
+    .outline-button {
+     
+     
+        font-size: 4vh;
+    
+        padding: 0.5vw;
+    
+    }
+    .filled-button:hover {
+      
+        border: 0.5vh dotted red; /* Add an outline to the button */
+        font-size: 4vh;
+    
+        padding: 0.5vw;
+    
+    }
+    .outline-button:hover {
+     
+     
+        font-size: 4vh;
+    
+        padding: 0.5vw;
+    
+    }
+
+    #contact{
+        height: 65vh;
+    }
+    #about{
+        height: 110vh;
+    }
+    nav {
+        position: fixed; /* Set the navigation bar to a fixed position */
+        top: 0; /* Stick it to the top of the screen */
+        left: 0; /* Align it to the left */
+        width: 100%; /* Make it span the entire width */
+        color: #ffff;
+        text-align: center;
+        background-color: #0f0f0f;
+        z-index: 100; /* Ensure it's above other content */
+        height: 6vh;
+    }
+    #timeline{
+        height: 150vh;
+    }
+    
+    nav ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: center; /* Center the navigation items horizontally */
+    }
+    .landingpage{
+        width: 85vw;
+    }
+    
+    nav ul li {
+        margin: 2.5vw 0;
+    }
+    
+    nav ul li a {
+        text-decoration: none;
+        color: #4dff00;
+        margin-left: 6vw;
+        margin-right: 6vw;
+        transition: color 0.3s ease;
+        font-size: 3.5vw;
+    }
+    
+    nav ul li a:hover {
+        color: red; /* Change to your desired hover color */
+        opacity: 0.5;
+    }
+    
+}
+
+
+
+
+
+

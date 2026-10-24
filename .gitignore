@@ -23,3 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 .claude/settings.local.json
+
+# Full-size originals of timeline photos; the site uses the resized copies in public/timeline/web/
+public/timeline/*.jpg
+public/timeline/*.jpeg

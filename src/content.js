@@ -13,25 +13,75 @@ export const profile = {
   ],
 }
 
-export const projects = [
+// Bigger, ongoing efforts. Shown first, as wide cards.
+export const initiatives = [
   {
     title: 'Chapter Room',
     description:
-      'A mobile app that helps Greek chapters run their house: announcements, events, and member management in one place.',
+      'The modern operating system for Greek life: feeds and group chats, roles and permissions, geofenced attendance, dues, and shared albums in one app.',
     tags: ['Flutter', 'Supabase', 'iOS', 'Android'],
-    href: '#',
+    href: 'https://chapterroom.vercel.app',
   },
   {
-    title: 'Conduct',
-    description: 'Short description of this project and what problem it solves.',
-    tags: ['React', 'Tailwind'],
-    href: '#',
+    title: 'Himalayan Hacks',
+    description:
+      'Bringing computer education and basic programming to kids in rural Nepal with the Ek Artha Foundation. We raised around $10,000, donated a computer lab, and ran a two-day camp in Manahari.',
+    tags: ['Nonprofit', 'Education', 'Nepal'],
+    href: 'archive/himalayan-hacks/',
+    archived: true,
+  },
+]
+
+// Everything else. `archived: true` means the link opens a copy hosted on this site.
+export const projects = [
+  {
+    title: 'Renew 222',
+    description: 'The capital campaign site for renovating the Acacia chapter house at 222 Langdon Street.',
+    tags: ['Next.js', 'Supabase'],
+    href: 'https://renew222.org',
   },
   {
-    title: 'Project three',
-    description: 'Short description of this project and what problem it solves.',
-    tags: ['Java'],
-    href: '#',
+    title: 'Castaways',
+    description: 'The site for Castaways, a Hack Club hackathon for teens in Charleston, styled like a weathered pirate newspaper.',
+    tags: ['Next.js', 'Tailwind'],
+    href: 'archive/castaways/',
+    archived: true,
+  },
+  {
+    title: 'Dreamer',
+    description:
+      'A learning app for autistic kids that adapts each lesson through audio, animation, and haptics. Winner of the 2023 Congressional App Challenge for SC-5.',
+    tags: ['Flutter', 'Swift'],
+    href: 'https://github.com/notsamay/DreamerCAC',
+  },
+  {
+    title: 'Barisha Jewellery',
+    description: 'A storefront website for a jewelry business.',
+    tags: ['Next.js', 'Tailwind'],
+    href: 'https://barishajewellery.vercel.app',
+  },
+]
+
+// Old sites that went offline, rebuilt and hosted under /archive/.
+export const archive = [
+  {
+    slug: 'castaways',
+    title: 'Castaways',
+    year: '2024',
+    description: 'The site for Castaways, a Hack Club hackathon for teens in Charleston, styled like a weathered pirate newspaper.',
+    repo: 'https://github.com/notsamay/CastawaysHackathon',
+    story: [
+      'Castaways is my greatest scar tissue. It taught me more than anything that went smoothly.',
+      "It's where I learned to cold email: reaching out to sponsors, venues, and partners who had never heard of me, and figuring out what actually earns a reply. It's also where I learned what running an organization takes, from delegating and following up to keeping people committed when nothing is guaranteed.",
+      "Most of all, it taught me that things need to start small and grow naturally. You can't skip straight to the big version. Everything I've built since has been shaped by that lesson.",
+    ],
+  },
+  {
+    slug: 'himalayan-hacks',
+    title: 'Himalayan Hacks',
+    year: '2023',
+    description: 'The original site for Himalayan Hacks, with the event timeline, sign-up form, and donation link.',
+    repo: 'https://github.com/notsamay/HHacks',
   },
 ]
 
@@ -43,14 +93,14 @@ export const timeline = [
     meta: 'age 7 · 2nd grade',
     title: 'First lines of code',
     body: "Bored with regular Minecraft and eager to expand my horizons, I signed up for Youth Digital's Minecraft modding course. It was my first introduction to programming, and it's where I wrote my first lines of Java.",
-    photo: { src: null, caption: 'youth digital minecraft mod' },
+    photo: { src: '/timeline/web/minecraft-mods.jpg', caption: 'youth digital minecraft mod' },
   },
   {
     year: '2015–18',
     meta: 'the unity years',
     title: 'Learning to build games',
     body: "Modding turned into Unity. I spent these years writing C# and building my own games, learning from Brackeys and Blackthornprod and applying their lessons to my own ideas. Most of my ambitious plans never shipped, but this is where my love for building took off, and where I entered my first hackathon, the Brackeys Game Jam.",
-    photo: { src: null, caption: 'brackeys game jam entry' },
+    photo: null,
   },
   {
     year: '2019',
@@ -71,34 +121,34 @@ export const timeline = [
     meta: 'hack club',
     title: 'Back to building',
     body: "In 2022, fresh off a torn ACL, I threw myself back into building and found Hack Club. Through Hack Club I competed in hackathons across the US and Canada, from local events to Boston and Toronto. That era made me want to organize something big of my own.",
-    photo: { src: null, caption: 'hackathon in boston or toronto' },
+    photo: { src: '/timeline/web/hack-club.jpg', caption: 'hackathon in boston or toronto' },
   },
   {
     year: 'late 2023',
     meta: 'ek artha foundation',
     title: 'Himalayan Hacks',
     body: "I partnered with the Ek Artha Foundation, an NGO in Nepal, to launch Himalayan Hacks, which brings computer education and basic programming to kids in rural Nepal. We raised around $10,000, donated a computer lab, and ran a two-day computer camp in Manahari Rural Municipality.",
-    photo: { src: null, caption: 'computer camp in manahari' },
+    photo: { src: '/timeline/web/himalayan-hacks.jpg', caption: 'computer camp in manahari' },
   },
   {
     year: '2024',
     meta: 'congressional app challenge',
     title: 'Dreamer',
     body: "My little cousin is autistic, and traditional teaching doesn't fit how my cousin learns. In 11th grade I built Dreamer solo in Flutter, working with a developmental psychologist to adapt each lesson to the child through audio, animation, and haptics. It won the 2023 Congressional App Challenge for South Carolina's 5th District and was displayed in the U.S. Capitol.",
-    photo: { src: null, caption: 'dreamer at the u.s. capitol' },
+    photo: { src: '/timeline/web/dreamer.jpg', caption: 'dreamer at the u.s. capitol' },
   },
   {
     year: '2025',
     meta: 'uw–madison · acacia',
     title: 'A new home',
     body: "After graduating from high school, I moved to Madison to study computer science and economics at UW–Madison. I joined Acacia Fraternity and became the only freshman on the executive board, as secretary. I restarted alumni outreach, launched Renew 222, a capital campaign for our chapter house, started a career incubator, and now run the house's external communications and PR.",
-    photo: { src: null, caption: '222 langdon street' },
+    photo: { src: '/timeline/web/wisconsin.jpg', caption: 'new member of the year award' },
   },
   {
     year: '2026',
     meta: 'founder',
     title: 'Chapter Room',
     body: "I started Chapter Room, the modern operating system for Greek life. Feeds and group chats, roles and permissions, geofenced attendance, dues, and shared albums all live in one app. I'm building it end to end in Flutter and Supabase, launching at UW–Madison, South Carolina, and Clemson in spring 2027.",
-    photo: { src: null, caption: 'chapter room app' },
+    photo: null,
   },
 ]

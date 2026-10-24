@@ -12,7 +12,7 @@ function Photo({ photo, className = '' }) {
         src={photo.src.startsWith('/') ? import.meta.env.BASE_URL + photo.src.slice(1) : photo.src}
         alt={photo.caption}
         loading="lazy"
-        className={`w-full rounded-xl object-cover ${className}`}
+        className={`w-full rounded-xl object-cover opacity-80 ring-1 ring-white/10 brightness-90 saturate-[.7] transition-[filter,opacity] duration-500 group-hover:opacity-100 group-hover:brightness-100 group-hover:saturate-100 ${className}`}
       />
     )
   }
@@ -42,19 +42,19 @@ function Card({ item }) {
   // in the row instead of stretching to the full card height.
   if (!item.photo) {
     return (
-      <article className="flex flex-col rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 md:w-[min(85vw,300px)]">
+      <article className="flex flex-col md:w-[min(85vw,440px)]">
         <span aria-hidden="true" className="mb-5 h-0.5 w-8 bg-[#a51c30]" />
         <Meta item={item} size="text-3xl" />
-        <p className="mt-3 text-[15px] leading-relaxed text-neutral-400">{item.body}</p>
+        <p className="mt-3 text-[15px] leading-relaxed text-neutral-400 md:text-sm">{item.body}</p>
       </article>
     )
   }
   return (
-    <article className="flex h-full flex-col gap-6 rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 md:w-[min(85vw,420px)]">
-      <Photo photo={item.photo} className="aspect-video" />
+    <article className="group flex flex-col gap-6 md:grid md:w-[min(85vw,540px)] md:grid-cols-[150px_1fr] md:items-center md:gap-6">
+      <Photo photo={item.photo} className="aspect-video md:aspect-[4/5]" />
       <div>
         <Meta item={item} />
-        <p className="mt-3 text-[15px] leading-relaxed text-neutral-400">{item.body}</p>
+        <p className="mt-3 text-[15px] leading-relaxed text-neutral-400 md:text-sm">{item.body}</p>
       </div>
     </article>
   )
@@ -63,10 +63,13 @@ function Card({ item }) {
 export default function LifeTimeline() {
   const sectionRef = useRef(null)
   const trackRef = useRef(null)
-  const fillRef = useRef(null)
   const cardsRef = useRef([])
+  const lineRef = useRef(null)
+  const fillRef = useRef(null)
   const geometry = useRef({ enabled: false, distance: 0, offsets: [] })
   const [active, setActive] = useState(0)
+  // How many entries have scrolled into view; they fade in as they arrive.
+  const [shown, setShown] = useState(0)
 
   useEffect(() => {
     const section = sectionRef.current
@@ -80,6 +83,7 @@ export default function LifeTimeline() {
       if (!g.enabled) {
         section.style.height = ''
         track.style.transform = ''
+        setShown(timeline.length)
         return
       }
       g.distance = Math.max(0, track.scrollWidth - window.innerWidth)
@@ -98,7 +102,11 @@ export default function LifeTimeline() {
       const p = scrollable > 0 ? Math.min(1, Math.max(0, -section.getBoundingClientRect().top / scrollable)) : 0
       const x = p * g.distance
       track.style.transform = `translate3d(${-x}px, 0, 0)`
-      fillRef.current.style.transform = `scaleX(${p})`
+      // The line fills up to the middle of the screen.
+      const line = lineRef.current
+      fillRef.current.style.width = `${Math.min(line.offsetWidth, Math.max(0, x + window.innerWidth / 2 - line.offsetLeft))}px`
+      const n = cardsRef.current.filter((el) => el.offsetLeft - x < window.innerWidth * 0.85).length
+      setShown((prev) => (prev === n ? prev : n))
       let i = 0
       while (i < g.offsets.length - 1 && x >= (g.offsets[i] + g.offsets[i + 1]) / 2) i++
       setActive((prev) => (prev === i ? prev : i))
@@ -188,13 +196,23 @@ export default function LifeTimeline() {
 
   return (
     <section id="timeline" ref={sectionRef} className="relative">
-      <div className="py-20 md:sticky md:top-0 md:flex md:h-svh md:flex-col md:justify-center md:overflow-hidden md:py-0">
+      <div className="py-20 md:sticky md:top-0 md:h-svh md:overflow-hidden md:pb-6 md:pt-20">
         <div
           ref={trackRef}
-          className="flex flex-col gap-5 md:w-max md:flex-row md:cursor-grab md:select-none md:items-stretch md:will-change-transform"
+          className="relative flex flex-col gap-12 md:h-full md:w-max md:flex-row md:cursor-grab md:select-none md:items-center md:gap-0 md:will-change-transform"
           style={{ paddingLeft: gutter, paddingRight: gutter }}
         >
-          <div className="flex shrink-0 flex-col justify-center pb-6 md:w-[min(85vw,360px)] md:pb-0 md:pr-6">
+          {/* Center line (desktop only); runs from the intro to "what's next" */}
+          <div
+            ref={lineRef}
+            aria-hidden="true"
+            className="absolute top-1/2 hidden h-0.5 -translate-y-1/2 bg-white/10 md:block"
+            style={{ left: gutter, right: gutter }}
+          >
+            <div ref={fillRef} className="h-full w-0 bg-[#a51c30]" />
+          </div>
+
+          <div className="relative flex shrink-0 flex-col justify-center bg-ink pb-6 md:mr-16 md:w-[min(85vw,360px)] md:pb-0 md:pr-6">
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-500">timeline</p>
             <h2 className="mt-3 font-display text-5xl font-bold leading-[0.95] tracking-tight text-white sm:text-6xl">
               a life in builds.
@@ -205,39 +223,59 @@ export default function LifeTimeline() {
             <p className="mt-8 hidden font-mono text-xs tracking-wide text-neutral-500 md:block">scroll or drag →</p>
           </div>
 
-          {timeline.map((item, i) => (
-            <div key={item.year} ref={(el) => (cardsRef.current[i] = el)} className={`shrink-0 ${item.photo ? '' : 'md:self-center'}`}>
-              <Card item={item} />
-            </div>
-          ))}
+          {/* Entries alternate above and below the line, overlapping their
+              neighbours horizontally so the row stays compact. */}
+          {timeline.map((item, i) => {
+            const above = i % 2 === 0
+            const visible = i < shown
+            // Cards slide toward the line as they fade in.
+            const reveal = `transition-[opacity,transform] duration-700 ease-out motion-reduce:transition-none ${
+              visible ? 'translate-y-0 opacity-100' : `opacity-0 ${above ? '-translate-y-6' : 'translate-y-6'}`
+            }`
+            return (
+              <div
+                key={item.year}
+                ref={(el) => (cardsRef.current[i] = el)}
+                className={`relative shrink-0 md:flex md:h-full md:flex-col ${i > 0 ? 'md:-ml-32' : ''}`}
+              >
+                <div className={`md:flex md:h-1/2 md:flex-col ${above ? 'md:justify-end md:pb-7' : 'md:mt-auto md:justify-start md:pt-7'}`}>
+                  <div className={reveal}>
+                    <Card item={item} />
+                  </div>
+                </div>
+                {/* Stem from the card to its mark on the line */}
+                <span
+                  aria-hidden="true"
+                  className={`absolute left-1/2 hidden h-7 w-px transition-[opacity,background-color] duration-700 md:block ${above ? 'bottom-1/2' : 'top-1/2'} ${
+                    visible ? 'opacity-100' : 'opacity-0'
+                  } ${i <= active ? 'bg-[#a51c30]' : 'bg-white/15'}`}
+                />
+                <button
+                  type="button"
+                  onClick={() => jumpTo(i)}
+                  aria-label={`Jump to ${item.year}`}
+                  className={`absolute left-1/2 top-1/2 hidden h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 transition-[background-color,border-color,box-shadow] duration-300 md:block ${
+                    i <= active ? 'border-[#d23a4f] bg-[#a51c30]' : 'border-white/25 bg-ink hover:border-white/50'
+                  } ${i === active ? 'ring-4 ring-[#a51c30]/25' : ''}`}
+                />
+                <span
+                  className={`absolute left-1/2 hidden -translate-x-1/2 whitespace-nowrap font-mono text-[11px] tracking-wide transition-colors md:block ${
+                    above ? 'top-[calc(50%+16px)]' : 'bottom-[calc(50%+16px)]'
+                  } ${i === active ? 'text-[#f5ead2]' : 'text-neutral-600'}`}
+                >
+                  {item.year}
+                </span>
+              </div>
+            )
+          })}
 
           <a
             href="#projects"
-            className="group flex shrink-0 items-center gap-3 pt-6 font-display text-3xl font-bold text-white md:w-[min(85vw,320px)] md:justify-center md:pt-0"
+            className="group relative flex shrink-0 items-center gap-3 bg-ink pt-6 font-display text-3xl font-bold text-white md:ml-16 md:w-[min(85vw,320px)] md:justify-center md:pt-0"
           >
             what's next
             <span className="text-[#d23a4f] transition-transform group-hover:translate-x-1">→</span>
           </a>
-        </div>
-
-        {/* Progress rail (desktop only) */}
-        <div className="mx-auto mt-10 hidden w-full max-w-5xl px-5 md:block">
-          <div className="relative h-0.5 bg-white/10">
-            <div ref={fillRef} className="absolute inset-0 origin-left bg-[#a51c30]" style={{ transform: 'scaleX(0)' }} />
-          </div>
-          <ol className="mt-4 flex justify-between font-mono text-xs">
-            {timeline.map((item, i) => (
-              <li key={item.year}>
-                <button
-                  type="button"
-                  onClick={() => jumpTo(i)}
-                  className={`transition-colors ${i === active ? 'text-[#f5ead2]' : 'text-neutral-600 hover:text-neutral-400'}`}
-                >
-                  {item.year}
-                </button>
-              </li>
-            ))}
-          </ol>
         </div>
       </div>
     </section>
