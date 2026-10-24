@@ -48,25 +48,42 @@ const card =
 const arrow =
   'text-neutral-500 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-white'
 
-// Archived entries point at copies hosted on this site; everything else opens in a new tab.
-function ProjectCard({ p, wide = false }) {
-  const external = !p.archived
+// A text-only entry: title and year on the left, details and a link on the right.
+// Archived entries open old copies hosted on this site; everything else opens in a new tab.
+function Entry({ p }) {
   return (
-    <a
-      href={p.archived ? import.meta.env.BASE_URL + p.href : p.href}
-      {...(external ? { target: '_blank', rel: 'noreferrer' } : {})}
-      className={`${card} group flex flex-col p-6 ${wide ? 'sm:p-8' : ''}`}
-    >
-      <div className="flex items-start justify-between gap-4">
-        <h3 className={`font-display font-bold tracking-tight text-white ${wide ? 'text-3xl' : 'text-2xl'}`}>{p.title}</h3>
-        <span className={arrow}>↗</span>
+    <li className="grid gap-4 border-t border-white/[0.08] py-10 md:grid-cols-[220px_1fr] md:gap-10">
+      <div>
+        <h4 className="font-display text-2xl font-bold tracking-tight text-white">{p.title}</h4>
+        {p.year && <p className="mt-1 font-mono text-xs text-[#d23a4f]">{p.year}</p>}
       </div>
-      <p className="mt-3 flex-1 leading-relaxed text-neutral-400">{p.description}</p>
-      <div className="mt-6 flex flex-wrap items-center justify-between gap-3 font-mono text-xs text-neutral-500">
-        <span>{p.tags.join('  ·  ')}</span>
-        {p.archived && <span className="text-[#d23a4f]">archived site</span>}
+      <div className="max-w-2xl">
+        <p className="leading-relaxed text-neutral-400">{p.description}</p>
+        {p.story && (
+          <div className="mt-5 space-y-3 border-l-2 border-[#a51c30] pl-4 text-[15px] leading-relaxed text-neutral-300">
+            {p.story.map((para) => (
+              <p key={para}>{para}</p>
+            ))}
+          </div>
+        )}
+        <p className="mt-5 font-mono text-xs text-neutral-500">{p.tags.join('  ·  ')}</p>
+        <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2">
+          <a
+            href={p.archived ? import.meta.env.BASE_URL + p.href : p.href}
+            {...(p.archived ? {} : { target: '_blank', rel: 'noreferrer' })}
+            className="group inline-flex items-center gap-2 rounded-lg border border-white/15 px-4 py-2 text-sm text-white transition-colors hover:border-white/40 hover:bg-white/[0.05]"
+          >
+            {p.linkLabel ?? 'view site'}
+            <span className={arrow}>↗</span>
+          </a>
+          {p.archived && (
+            <span className="font-mono text-xs text-neutral-500">
+              archived copy of the original site, so it may be slightly broken
+            </span>
+          )}
+        </div>
       </div>
-    </a>
+    </li>
   )
 }
 
@@ -89,25 +106,18 @@ export default function App() {
       <main className="mx-auto max-w-5xl divide-y divide-white/[0.08] px-5">
         <Section id="projects" eyebrow="work" title="things i've built">
           <Group label="initiatives">
-            <div className="grid gap-4 md:grid-cols-2">
+            <ul>
               {initiatives.map((p) => (
-                <ProjectCard key={p.title} p={p} wide />
+                <Entry key={p.title} p={p} />
               ))}
-            </div>
+            </ul>
           </Group>
           <Group label="projects">
-            <div className="grid gap-4 sm:grid-cols-2">
+            <ul>
               {projects.map((p) => (
-                <ProjectCard key={p.title} p={p} />
+                <Entry key={p.title} p={p} />
               ))}
-            </div>
-            <a
-              href={`${import.meta.env.BASE_URL}archive/`}
-              className="group mt-6 inline-flex items-center gap-2 font-mono text-xs text-neutral-500 transition-colors hover:text-white"
-            >
-              browse the archive of old sites
-              <span className="text-[#d23a4f] transition-transform group-hover:translate-x-1">→</span>
-            </a>
+            </ul>
           </Group>
         </Section>
 

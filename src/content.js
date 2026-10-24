@@ -13,75 +13,66 @@ export const profile = {
   ],
 }
 
-// Bigger, ongoing efforts. Shown first, as wide cards.
+// Bigger, ongoing efforts, listed first under "work".
+// `archived: true` means the link opens an old copy hosted on this site (public/archive/).
 export const initiatives = [
   {
     title: 'Chapter Room',
+    year: '2026',
     description:
-      'The modern operating system for Greek life: feeds and group chats, roles and permissions, geofenced attendance, dues, and shared albums in one app.',
+      "The modern operating system for Greek life. Feeds and group chats, roles and permissions, geofenced attendance, dues, and shared albums all live in one app. I'm building it end to end in Flutter and Supabase, launching at UW–Madison, South Carolina, and Clemson in spring 2027.",
     tags: ['Flutter', 'Supabase', 'iOS', 'Android'],
-    href: 'https://chapterroom.vercel.app',
+    href: 'https://joinchapterroom.com',
+  },
+  {
+    title: 'Renew 222',
+    year: '2025',
+    description:
+      "A capital campaign to renovate Acacia's chapter house at 222 Langdon Street. I launched the campaign and built its site, which shares the house's history and takes donations online.",
+    tags: ['Next.js', 'Supabase'],
+    href: 'https://renew222.org',
   },
   {
     title: 'Himalayan Hacks',
+    year: '2023',
     description:
-      'Bringing computer education and basic programming to kids in rural Nepal with the Ek Artha Foundation. We raised around $10,000, donated a computer lab, and ran a two-day camp in Manahari.',
+      'Computer education and basic programming for kids in rural Nepal, run with the Ek Artha Foundation. We raised around $10,000, donated a computer lab, and ran a two-day computer camp in Manahari Rural Municipality.',
     tags: ['Nonprofit', 'Education', 'Nepal'],
     href: 'archive/himalayan-hacks/',
     archived: true,
   },
 ]
 
-// Everything else. `archived: true` means the link opens a copy hosted on this site.
 export const projects = [
   {
-    title: 'Renew 222',
-    description: 'The capital campaign site for renovating the Acacia chapter house at 222 Langdon Street.',
-    tags: ['Next.js', 'Supabase'],
-    href: 'https://renew222.org',
-  },
-  {
     title: 'Castaways',
-    description: 'The site for Castaways, a Hack Club hackathon for teens in Charleston, styled like a weathered pirate newspaper.',
+    year: '2024',
+    description:
+      'A Hack Club hackathon for teens in Charleston. I organized it from scratch, from cold emailing sponsors and venues to building the team, and made the site, styled like a weathered pirate newspaper.',
+    story: [
+      'Castaways is my greatest scar tissue. It taught me more than anything that went smoothly.',
+      "It's where I learned to cold email: reaching out to sponsors, venues, and partners who had never heard of me, and figuring out what actually earns a reply. It's also where I learned what running an organization takes, from delegating and following up to keeping people committed when nothing is guaranteed.",
+      "Most of all, it taught me that things need to start small and grow naturally. You can't skip straight to the big version. Everything I've built since has been shaped by that lesson.",
+    ],
     tags: ['Next.js', 'Tailwind'],
     href: 'archive/castaways/',
     archived: true,
   },
   {
     title: 'Dreamer',
+    year: '2024',
     description:
-      'A learning app for autistic kids that adapts each lesson through audio, animation, and haptics. Winner of the 2023 Congressional App Challenge for SC-5.',
+      'A learning app for autistic kids, built solo in Flutter with a developmental psychologist. Each lesson adapts to the child through audio, animation, and haptics. It won the 2023 Congressional App Challenge for South Carolina\'s 5th District and was displayed in the U.S. Capitol.',
     tags: ['Flutter', 'Swift'],
     href: 'https://github.com/notsamay/DreamerCAC',
+    linkLabel: 'view code',
   },
   {
     title: 'Barisha Jewellery',
-    description: 'A storefront website for a jewelry business.',
+    description:
+      'A website for Barisha, a handcrafted jewelry business in Sydney. It showcases one-of-a-kind necklace and earring sets, tells the story behind the craft, and lets customers enquire about each piece.',
     tags: ['Next.js', 'Tailwind'],
     href: 'https://barishajewellery.vercel.app',
-  },
-]
-
-// Old sites that went offline, rebuilt and hosted under /archive/.
-export const archive = [
-  {
-    slug: 'castaways',
-    title: 'Castaways',
-    year: '2024',
-    description: 'The site for Castaways, a Hack Club hackathon for teens in Charleston, styled like a weathered pirate newspaper.',
-    repo: 'https://github.com/notsamay/CastawaysHackathon',
-    story: [
-      'Castaways is my greatest scar tissue. It taught me more than anything that went smoothly.',
-      "It's where I learned to cold email: reaching out to sponsors, venues, and partners who had never heard of me, and figuring out what actually earns a reply. It's also where I learned what running an organization takes, from delegating and following up to keeping people committed when nothing is guaranteed.",
-      "Most of all, it taught me that things need to start small and grow naturally. You can't skip straight to the big version. Everything I've built since has been shaped by that lesson.",
-    ],
-  },
-  {
-    slug: 'himalayan-hacks',
-    title: 'Himalayan Hacks',
-    year: '2023',
-    description: 'The original site for Himalayan Hacks, with the event timeline, sign-up form, and donation link.',
-    repo: 'https://github.com/notsamay/HHacks',
   },
 ]
 
