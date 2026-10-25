@@ -29,10 +29,10 @@ function Meta({ item, size = 'text-4xl' }) {
   return (
     <>
       <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-        <span className={`font-display font-extrabold tracking-[-0.03em] text-[#f5ead2] ${size}`}>{item.year}</span>
-        <span className="font-mono text-xs tracking-wide text-neutral-500">{item.meta}</span>
+        <span className={`font-display font-bold tracking-tight text-white ${size}`}>{item.year}</span>
+        <span className="text-sm text-neutral-500">{item.meta}</span>
       </div>
-      <h3 className="mt-3 font-title text-xl font-bold tracking-[-0.01em] text-white">{item.title}</h3>
+      <h3 className="mt-2 text-xl font-semibold text-white md:text-2xl">{item.title}</h3>
     </>
   )
 }
@@ -42,19 +42,18 @@ function Card({ item }) {
   // in the row instead of stretching to the full card height.
   if (!item.photo) {
     return (
-      <article className="flex flex-col md:w-[min(85vw,440px)]">
-        <span aria-hidden="true" className="mb-5 h-0.5 w-8 bg-[#a51c30]" />
-        <Meta item={item} size="text-3xl" />
-        <p className="mt-3 text-[15px] leading-relaxed text-neutral-400 md:text-sm">{item.body}</p>
+      <article className="flex flex-col md:w-[min(85vw,540px)]">
+        <Meta item={item} />
+        <p className="mt-3 text-[15px] leading-relaxed text-neutral-300">{item.body}</p>
       </article>
     )
   }
   return (
-    <article className="group flex flex-col gap-6 md:grid md:w-[min(85vw,540px)] md:grid-cols-[150px_1fr] md:items-center md:gap-6">
+    <article className="group flex flex-col gap-6 md:grid md:w-[min(85vw,660px)] md:grid-cols-[200px_1fr] md:items-center md:gap-7">
       <Photo photo={item.photo} className="aspect-video md:aspect-[4/5]" />
       <div>
         <Meta item={item} />
-        <p className="mt-3 text-[15px] leading-relaxed text-neutral-400 md:text-sm">{item.body}</p>
+        <p className="mt-3 text-[15px] leading-relaxed text-neutral-300">{item.body}</p>
       </div>
     </article>
   )
@@ -209,18 +208,18 @@ export default function LifeTimeline() {
             className="absolute top-1/2 hidden h-0.5 -translate-y-1/2 bg-white/10 md:block"
             style={{ left: gutter, right: gutter }}
           >
-            <div ref={fillRef} className="h-full w-0 bg-[#a51c30]" />
+            <div ref={fillRef} className="h-full w-0 bg-white/50" />
           </div>
 
           <div className="relative flex shrink-0 flex-col justify-center bg-ink pb-6 md:mr-16 md:w-[min(85vw,360px)] md:pb-0 md:pr-6">
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-500">timeline</p>
-            <h2 className="mt-3 font-display text-5xl font-bold leading-[0.95] tracking-tight text-white sm:text-6xl">
-              a life in builds.
+            <h2 className="flex items-center gap-3 font-display text-4xl font-bold tracking-tight text-white">
+              <span aria-hidden="true" className="h-2 w-2 bg-[#a51c30]" />
+              timeline
             </h2>
-            <p className="mt-5 max-w-xs leading-relaxed text-neutral-400">
+            <p className="mt-4 max-w-xs text-lg leading-relaxed text-neutral-400">
               twelve years of making things, from minecraft mods to chapter room.
             </p>
-            <p className="mt-8 hidden font-mono text-xs tracking-wide text-neutral-500 md:block">scroll or drag →</p>
+            <p className="mt-8 hidden text-sm text-neutral-500 md:block">scroll or drag →</p>
           </div>
 
           {/* Entries alternate above and below the line, overlapping their
@@ -248,9 +247,9 @@ export default function LifeTimeline() {
                   aria-hidden="true"
                   className={`absolute left-1/2 hidden h-7 w-px transition-[opacity,background-color] duration-700 md:block ${above ? 'bottom-1/2' : 'top-1/2'} ${
                     visible ? 'opacity-100' : 'opacity-0'
-                  } ${i <= active ? 'bg-[#a51c30]' : 'bg-white/15'}`}
+                  } ${i <= active ? 'bg-white/40' : 'bg-white/15'}`}
                 />
-                {/* Mark: a small dot that fills red once reached, with a halo on the active entry */}
+                {/* Mark: a dot that turns white once reached; only the active entry is red, with a halo */}
                 <button
                   type="button"
                   onClick={() => jumpTo(i)}
@@ -266,14 +265,14 @@ export default function LifeTimeline() {
                   <span
                     aria-hidden="true"
                     className={`relative rounded-full ring-4 ring-ink transition-[background-color,width,height] duration-300 ${
-                      i === active ? 'h-3 w-3' : 'h-2.5 w-2.5'
-                    } ${i <= active ? 'bg-[#a51c30]' : 'bg-neutral-600 group-hover/mark:bg-neutral-400'}`}
+                      i === active ? 'h-3 w-3 bg-[#a51c30]' : 'h-2.5 w-2.5'
+                    } ${i < active ? 'bg-white' : i > active ? 'bg-neutral-600 group-hover/mark:bg-neutral-400' : ''}`}
                   />
                 </button>
                 <span
-                  className={`absolute left-1/2 hidden -translate-x-1/2 whitespace-nowrap font-mono text-[11px] tracking-wide transition-colors md:block ${
+                  className={`absolute left-1/2 hidden -translate-x-1/2 whitespace-nowrap text-xs transition-colors md:block ${
                     above ? 'top-[calc(50%+18px)]' : 'bottom-[calc(50%+18px)]'
-                  } ${i === active ? 'text-[#f5ead2]' : 'text-neutral-600'}`}
+                  } ${i === active ? 'text-white' : 'text-neutral-500'}`}
                 >
                   {item.year}
                 </span>
@@ -283,7 +282,7 @@ export default function LifeTimeline() {
 
           <a
             href="#projects"
-            className="group relative flex shrink-0 items-center gap-3 bg-ink pt-6 font-display text-3xl font-bold text-white md:ml-16 md:w-[min(85vw,320px)] md:justify-center md:pt-0"
+            className="group relative flex shrink-0 items-center gap-3 bg-ink pt-6 font-display text-4xl font-bold tracking-tight text-white md:ml-16 md:w-[min(85vw,320px)] md:justify-center md:pt-0"
           >
             what's next
             <span className="transition-transform group-hover:translate-x-1">→</span>
