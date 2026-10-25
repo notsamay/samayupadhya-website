@@ -64,22 +64,7 @@ export const scarTissue = [
     year: '2024',
     status: 'failed',
     description:
-      "A Hack Club hackathon for high school students in Charleston that I organized from the ground up, from cold emailing sponsors and venues to recruiting a team and building the website. It did not succeed, and it remains the project I have learned the most from.",
-    quote: 'Castaways is my greatest scar tissue. It taught me more than any project that went smoothly.',
-    lessons: [
-      {
-        title: 'Cold emailing',
-        body: 'Reaching out to sponsors, venues, and partners who had never heard of me, and learning what earns a reply.',
-      },
-      {
-        title: 'Running an organization',
-        body: 'Delegating, following up, and keeping people committed when nothing is guaranteed.',
-      },
-      {
-        title: 'Starting small',
-        body: 'Ambitious things need to start small and grow naturally. There is no skipping straight to the big version, and that lesson has shaped everything I have built since.',
-      },
-    ],
+      'A Hack Club hackathon for high school students in Charleston that I organized from the ground up. It did not succeed, but it taught me how to cold email, how to run an organization, and that ambitious things need to start small and grow naturally.',
     tags: ['Next.js', 'Tailwind'],
     href: 'archive/castaways/',
     archived: true,

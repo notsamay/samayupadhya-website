@@ -66,6 +66,7 @@ function Entry({ p }) {
       <h4 className="text-lg font-semibold text-white">
         {p.title}
         {p.year && <span className="ml-2 font-normal text-neutral-500">{p.year}</span>}
+        {p.status && <span className="ml-2 font-normal text-neutral-500">· {p.status}</span>}
       </h4>
       <p className="mt-2 leading-relaxed text-neutral-300">{p.description}</p>
       {p.tags.length > 0 && <p className="mt-4 text-sm text-neutral-500">built with {p.tags.join(', ')}</p>}
@@ -92,41 +93,6 @@ function ProjectRow({ p }) {
         {p.tags.length > 0 && <p className="mt-2 text-sm text-neutral-500">built with {p.tags.join(', ')}</p>}
       </div>
       <p className="text-sm md:pt-1 md:text-right">{p.href && <EntryLink p={p} />}</p>
-    </li>
-  )
-}
-
-// A failure in two columns: name and details on the left; the takeaway, summary,
-// and lessons (one per row, divided by rules) on the right.
-function ScarEntry({ p }) {
-  return (
-    <li className="grid gap-8 border-t border-white/20 pt-10 md:grid-cols-[220px_1fr] md:gap-12">
-      <div>
-        <h4 className="font-display text-3xl font-bold tracking-tight text-white">{p.title}</h4>
-        <p className="mt-2 text-neutral-500">
-          {p.year} <span className="text-white">· {p.status}</span>
-        </p>
-        <p className="mt-6 text-sm text-neutral-500">built with {p.tags.join(', ')}</p>
-        <p className="mt-2 text-sm">
-          <EntryLink p={p} />
-        </p>
-        <p className="mt-1 text-xs text-neutral-500">an archived copy, so it may be slightly broken</p>
-      </div>
-      <div>
-        <blockquote className="font-display text-2xl font-medium leading-snug tracking-tight text-white sm:text-3xl">
-          “{p.quote}”
-        </blockquote>
-        <p className="mt-6 leading-relaxed text-neutral-300">{p.description}</p>
-        <ol className="mt-10 border-b border-white/15">
-          {p.lessons.map((l, i) => (
-            <li key={l.title} className="grid gap-2 border-t border-white/15 py-5 sm:grid-cols-[48px_200px_1fr] sm:gap-6">
-              <span className="text-sm text-neutral-500">0{i + 1}</span>
-              <h5 className="font-semibold text-white">{l.title}</h5>
-              <p className="leading-relaxed text-neutral-300">{l.body}</p>
-            </li>
-          ))}
-        </ol>
-      </div>
     </li>
   )
 }
@@ -171,9 +137,9 @@ export default function App() {
             </ul>
           </Group>
           <Group title="scar tissue" intro="Efforts that did not succeed, and what they taught me.">
-            <ul>
+            <ul className="grid gap-x-12 md:grid-cols-2">
               {scarTissue.map((p) => (
-                <ScarEntry key={p.title} p={p} />
+                <Entry key={p.title} p={p} />
               ))}
             </ul>
           </Group>
