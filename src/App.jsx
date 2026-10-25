@@ -56,6 +56,11 @@ function Entry({ p }) {
       <div className="flex items-baseline gap-3">
         <h4 className="font-display text-2xl font-bold tracking-tight text-white">{p.title}</h4>
         {p.year && <span className="font-mono text-xs text-[#d23a4f]">{p.year}</span>}
+        {p.status && (
+          <span className="rounded border border-[#d23a4f]/50 px-1.5 py-0.5 font-mono text-[11px] uppercase tracking-wider text-[#d23a4f]">
+            {p.status}
+          </span>
+        )}
       </div>
       <div className="mt-3">
         <p className="leading-relaxed text-neutral-400">{p.description}</p>

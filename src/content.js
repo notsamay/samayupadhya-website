@@ -20,7 +20,7 @@ export const initiatives = [
     title: 'Chapter Room',
     year: '2026',
     description:
-      "The modern operating system for Greek life. Feeds and group chats, roles and permissions, geofenced attendance, dues, and shared albums all live in one app. I'm building it end to end in Flutter and Supabase, launching at UW–Madison, South Carolina, and Clemson in spring 2027.",
+      "The modern operating system for Greek life. Feeds and group chats, roles and permissions, geofenced attendance, dues, and shared albums all live in one app. I'm building it end to end in Flutter and Supabase, with chapters at 3 schools (UW–Madison, South Carolina, and Clemson) launching on iOS and Android in spring 2027.",
     tags: ['Flutter', 'Supabase', 'iOS', 'Android'],
     href: 'https://joinchapterroom.com',
   },
@@ -28,23 +28,9 @@ export const initiatives = [
     title: 'Renew 222',
     year: '2025',
     description:
-      "A capital campaign to renovate Acacia's chapter house at 222 Langdon Street. I launched the campaign and built its site, which shares the house's history and takes donations online.",
+      "The capital campaign to restore Acacia's chapter house at 222 Langdon Street, a Tudor Revival home built in 1926. The chapter has grown from 17 brothers to 137 in under a decade, the largest in its 120-year history, and needs a house to match. As senior undergraduate chairman, I lead the campaign alongside the alumni board and co-built its site, which reconnects alumni and takes donations online.",
     tags: ['Next.js', 'Supabase'],
     href: 'https://renew222.org',
-  },
-  {
-    title: 'Castaways',
-    year: '2024',
-    description:
-      'A Hack Club hackathon for teens in Charleston. I organized it from scratch, from cold emailing sponsors and venues to building the team, and made the site, styled like a weathered pirate newspaper.',
-    story: [
-      'Castaways is my greatest scar tissue. It taught me more than anything that went smoothly.',
-      "It's where I learned to cold email: reaching out to sponsors, venues, and partners who had never heard of me, and figuring out what actually earns a reply. It's also where I learned what running an organization takes, from delegating and following up to keeping people committed when nothing is guaranteed.",
-      "Most of all, it taught me that things need to start small and grow naturally. You can't skip straight to the big version. Everything I've built since has been shaped by that lesson.",
-    ],
-    tags: ['Next.js', 'Tailwind'],
-    href: 'archive/castaways/',
-    archived: true,
   },
   {
     title: 'Himalayan Hacks',
@@ -53,6 +39,21 @@ export const initiatives = [
       'Computer education and basic programming for kids in rural Nepal, run with the Ek Artha Foundation. We raised around $10,000, donated a computer lab, and ran a two-day computer camp in Manahari Rural Municipality.',
     tags: ['Nonprofit', 'Education', 'Nepal'],
     href: 'archive/himalayan-hacks/',
+    archived: true,
+  },
+  {
+    title: 'Castaways',
+    year: '2024',
+    status: 'failed',
+    description:
+      "A Hack Club hackathon for teens in Charleston that I organized from scratch, from cold emailing sponsors and venues to building the team and making the site. It failed, and it's the project I learned the most from.",
+    story: [
+      'Castaways is my greatest scar tissue. It taught me more than anything that went smoothly.',
+      "It's where I learned to cold email: reaching out to sponsors, venues, and partners who had never heard of me, and figuring out what actually earns a reply. It's also where I learned what running an organization takes, from delegating and following up to keeping people committed when nothing is guaranteed.",
+      "Most of all, it taught me that things need to start small and grow naturally. You can't skip straight to the big version. Everything I've built since has been shaped by that lesson.",
+    ],
+    tags: ['Next.js', 'Tailwind'],
+    href: 'archive/castaways/',
     archived: true,
   },
 ]
