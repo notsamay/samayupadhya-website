@@ -22,9 +22,13 @@ export const initiatives = [
   },
   {
     title: 'Renew 222',
-    year: '2025–present',
+    year: '2026–present',
     description:
-      "I founded Renew 222, a capital campaign to restore Acacia's chapter house at 222 Langdon Street, a Tudor Revival home built in 1926. When I took office, the chapter had no active connection with its alumni. Since then, we have reconnected more than 200 alumni, raised $12,000 in seed funding, and established a capital fund for five renovation projects. The chapter has grown from 17 to 137 brothers in under a decade, the largest in its 120-year history, and needs a house to match. I lead the campaign as senior undergraduate chairman alongside the alumni board and co-built its website.",
+      "I founded Renew 222 in January 2026 to raise the capital to restore 222 Langdon Street, the home of Acacia's Lamedth chapter at UW–Madison, in time for the house's centennial. When I took office, the chapter had no active connection with its alumni. Since then, we have reconnected more than 200 alumni and raised $12,000 in seed funding.",
+    details: [
+      'A 2009 renovation converted the house into apartments. Now that it is a fraternity house again, and the chapter has grown from 17 to 137 brothers in under a decade, the campaign aims to restore its original character and make it a complete home for about 35 residents. The five priority projects are an Alumni Terrace on the front lawn, basement bathrooms with keypad access to separate event and living spaces, a TV room, a third-floor alumni lounge, and dedicated study rooms, each with a naming opportunity for donors.',
+      "As senior undergraduate chairman, I co-built renew222.org, set up the campaign's donor and pledge tracking, and organized a team of 15 solicitors to reach roughly 500 alumni. Long term, I am building Renew 222 into a lasting organization, with regular alumni newsletters, construction weeks that bring alumni back to work on the house, and a career incubator that connects brothers across generations.",
+    ],
     tags: ['Next.js', 'Supabase'],
     href: 'https://renew222.org',
   },
