@@ -43,8 +43,20 @@ function Section({ id, title, children }) {
 
 const textLink = 'text-white underline decoration-white/40 underline-offset-4 transition-colors hover:decoration-white'
 
-// A plain entry: title and year, what it was, what it was built with, then a link.
 // Archived entries open old copies hosted on this site; everything else opens in a new tab.
+function EntryLink({ p }) {
+  return (
+    <a
+      href={p.archived ? import.meta.env.BASE_URL + p.href : p.href}
+      {...(p.archived ? {} : { target: '_blank', rel: 'noreferrer' })}
+      className={textLink}
+    >
+      {p.linkLabel ?? 'view site'}
+    </a>
+  )
+}
+
+// An initiative, written out: title and year, what it is, its story, tools, then a link.
 function Entry({ p }) {
   return (
     <li className="border-t border-white/[0.08] py-7">
@@ -64,13 +76,7 @@ function Entry({ p }) {
       {p.tags.length > 0 && <p className="mt-4 text-sm text-neutral-500">built with {p.tags.join(', ')}</p>}
       {p.href && (
         <p className="mt-3 text-sm">
-          <a
-            href={p.archived ? import.meta.env.BASE_URL + p.href : p.href}
-            {...(p.archived ? {} : { target: '_blank', rel: 'noreferrer' })}
-            className={textLink}
-          >
-            {p.linkLabel ?? 'view site'}
-          </a>
+          <EntryLink p={p} />
           {p.archived && <span className="text-neutral-500"> (an archived copy, so it may be slightly broken)</span>}
         </p>
       )}
@@ -78,11 +84,29 @@ function Entry({ p }) {
   )
 }
 
-function Group({ label, children }) {
+// A project, as one compact row: name and year, what it is and what it's built with, then a link.
+function ProjectRow({ p }) {
   return (
-    <div>
-      <h3 className="mb-2 text-sm font-medium text-neutral-500">{label}</h3>
-      {children}
+    <li className="grid gap-2 border-t border-white/[0.08] py-6 md:grid-cols-[220px_1fr_100px] md:gap-8">
+      <h4 className="text-lg font-semibold text-white">
+        {p.title}
+        {p.year && <span className="ml-2 font-normal text-neutral-500">{p.year}</span>}
+      </h4>
+      <div>
+        <p className="leading-relaxed text-neutral-300">{p.description}</p>
+        {p.tags.length > 0 && <p className="mt-2 text-sm text-neutral-500">built with {p.tags.join(', ')}</p>}
+      </div>
+      <p className="text-sm md:pt-1 md:text-right">{p.href && <EntryLink p={p} />}</p>
+    </li>
+  )
+}
+
+function Group({ title, intro, children }) {
+  return (
+    <div className="mt-20 first:mt-0">
+      <h3 className="font-display text-2xl font-bold tracking-tight text-white">{title}</h3>
+      <p className="mt-3 max-w-2xl text-lg leading-relaxed text-neutral-400">{intro}</p>
+      <div className="mt-8">{children}</div>
     </div>
   )
 }
@@ -96,23 +120,23 @@ export default function App() {
 
       <main className="mx-auto max-w-5xl divide-y divide-white/[0.08] px-5">
         <Section id="projects" title="work">
-          {/* Initiatives on the left, projects on the right */}
-          <div className="grid gap-12 md:grid-cols-2">
-            <Group label="initiatives">
-              <ul>
-                {initiatives.map((p) => (
-                  <Entry key={p.title} p={p} />
-                ))}
-              </ul>
-            </Group>
-            <Group label="projects">
-              <ul>
-                {projects.map((p) => (
-                  <Entry key={p.title} p={p} />
-                ))}
-              </ul>
-            </Group>
-          </div>
+          <Group
+            title="initiatives"
+            intro="the bigger things i've started, the ones that pulled other people in: a company, a capital campaign, a nonprofit, and a hackathon that didn't work out."
+          >
+            <ul className="grid gap-x-12 md:grid-cols-2">
+              {initiatives.map((p) => (
+                <Entry key={p.title} p={p} />
+              ))}
+            </ul>
+          </Group>
+          <Group title="projects" intro="things i built by myself.">
+            <ul>
+              {projects.map((p) => (
+                <ProjectRow key={p.title} p={p} />
+              ))}
+            </ul>
+          </Group>
         </Section>
 
         <Section id="connect" title="contact">

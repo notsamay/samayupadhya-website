@@ -30,7 +30,7 @@ function Meta({ item, size = 'text-4xl' }) {
     <>
       <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
         <span className={`font-display font-extrabold tracking-[-0.03em] text-[#f5ead2] ${size}`}>{item.year}</span>
-        <span className="font-mono text-xs tracking-wide text-[#d23a4f]">{item.meta}</span>
+        <span className="font-mono text-xs tracking-wide text-neutral-500">{item.meta}</span>
       </div>
       <h3 className="mt-3 font-title text-xl font-bold tracking-[-0.01em] text-white">{item.title}</h3>
     </>
@@ -250,17 +250,29 @@ export default function LifeTimeline() {
                     visible ? 'opacity-100' : 'opacity-0'
                   } ${i <= active ? 'bg-[#a51c30]' : 'bg-white/15'}`}
                 />
+                {/* Mark: a small dot that fills red once reached, with a halo on the active entry */}
                 <button
                   type="button"
                   onClick={() => jumpTo(i)}
                   aria-label={`Jump to ${item.year}`}
-                  className={`absolute left-1/2 top-1/2 hidden h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 transition-[background-color,border-color,box-shadow] duration-300 md:block ${
-                    i <= active ? 'border-[#d23a4f] bg-[#a51c30]' : 'border-white/25 bg-ink hover:border-white/50'
-                  } ${i === active ? 'ring-4 ring-[#a51c30]/25' : ''}`}
-                />
+                  className="group/mark absolute left-1/2 top-1/2 hidden h-8 w-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center md:flex"
+                >
+                  <span
+                    aria-hidden="true"
+                    className={`absolute h-7 w-7 rounded-full border border-[#a51c30]/60 bg-[#a51c30]/10 transition-[opacity,transform] duration-500 ${
+                      i === active ? 'scale-100 opacity-100' : 'scale-50 opacity-0'
+                    }`}
+                  />
+                  <span
+                    aria-hidden="true"
+                    className={`relative rounded-full ring-4 ring-ink transition-[background-color,width,height] duration-300 ${
+                      i === active ? 'h-3 w-3' : 'h-2.5 w-2.5'
+                    } ${i <= active ? 'bg-[#a51c30]' : 'bg-neutral-600 group-hover/mark:bg-neutral-400'}`}
+                  />
+                </button>
                 <span
                   className={`absolute left-1/2 hidden -translate-x-1/2 whitespace-nowrap font-mono text-[11px] tracking-wide transition-colors md:block ${
-                    above ? 'top-[calc(50%+16px)]' : 'bottom-[calc(50%+16px)]'
+                    above ? 'top-[calc(50%+18px)]' : 'bottom-[calc(50%+18px)]'
                   } ${i === active ? 'text-[#f5ead2]' : 'text-neutral-600'}`}
                 >
                   {item.year}
@@ -274,7 +286,7 @@ export default function LifeTimeline() {
             className="group relative flex shrink-0 items-center gap-3 bg-ink pt-6 font-display text-3xl font-bold text-white md:ml-16 md:w-[min(85vw,320px)] md:justify-center md:pt-0"
           >
             what's next
-            <span className="text-[#d23a4f] transition-transform group-hover:translate-x-1">→</span>
+            <span className="transition-transform group-hover:translate-x-1">→</span>
           </a>
         </div>
       </div>
