@@ -62,7 +62,7 @@ function EntryLink({ p }) {
 // An initiative, written out: title and year, what it is, tools, then a link.
 function Entry({ p }) {
   return (
-    <li className="border-t border-white/[0.08] py-7">
+    <li className="border-t border-white/15 py-7">
       <h4 className="text-lg font-semibold text-white">
         {p.title}
         {p.year && <span className="ml-2 font-normal text-neutral-500">{p.year}</span>}
@@ -82,7 +82,7 @@ function Entry({ p }) {
 // A project, as one compact row: name and year, what it is and what it's built with, then a link.
 function ProjectRow({ p }) {
   return (
-    <li className="grid gap-2 border-t border-white/[0.08] py-6 md:grid-cols-[220px_1fr_100px] md:gap-8">
+    <li className="grid gap-2 border-t border-white/15 py-6 md:grid-cols-[220px_1fr_100px] md:gap-8">
       <h4 className="text-lg font-semibold text-white">
         {p.title}
         {p.year && <span className="ml-2 font-normal text-neutral-500">{p.year}</span>}
@@ -96,40 +96,44 @@ function ProjectRow({ p }) {
   )
 }
 
-// A failure as a feature block: the takeaway as a pull quote, a short summary, then the lessons side by side.
+// A failure in two columns: name and details on the left; the takeaway, summary,
+// and lessons (one per row, divided by rules) on the right.
 function ScarEntry({ p }) {
   return (
-    <li className="border-t border-white/[0.08] pt-10">
-      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+    <li className="grid gap-8 border-t border-white/20 pt-10 md:grid-cols-[220px_1fr] md:gap-12">
+      <div>
         <h4 className="font-display text-3xl font-bold tracking-tight text-white">{p.title}</h4>
-        <span className="text-neutral-500">{p.year}</span>
-        <span className="text-white">({p.status})</span>
+        <p className="mt-2 text-neutral-500">
+          {p.year} <span className="text-white">· {p.status}</span>
+        </p>
+        <p className="mt-6 text-sm text-neutral-500">built with {p.tags.join(', ')}</p>
+        <p className="mt-2 text-sm">
+          <EntryLink p={p} />
+        </p>
+        <p className="mt-1 text-xs text-neutral-500">an archived copy, so it may be slightly broken</p>
       </div>
-      <blockquote className="mt-6 max-w-3xl font-display text-2xl font-medium leading-snug tracking-tight text-white sm:text-3xl">
-        “{p.quote}”
-      </blockquote>
-      <p className="mt-6 max-w-3xl leading-relaxed text-neutral-300">{p.description}</p>
-      <ol className="mt-10 grid gap-8 sm:grid-cols-3 sm:gap-10">
-        {p.lessons.map((l, i) => (
-          <li key={l.title} className="border-t border-white/20 pt-4">
-            <p className="text-sm text-neutral-500">0{i + 1}</p>
-            <h5 className="mt-1 text-lg font-semibold text-white">{l.title}</h5>
-            <p className="mt-2 leading-relaxed text-neutral-300">{l.body}</p>
-          </li>
-        ))}
-      </ol>
-      <p className="mt-10 text-sm text-neutral-500">
-        built with {p.tags.join(', ')} ·{' '}
-        <EntryLink p={p} />
-        <span> (an archived copy, so it may be slightly broken)</span>
-      </p>
+      <div>
+        <blockquote className="font-display text-2xl font-medium leading-snug tracking-tight text-white sm:text-3xl">
+          “{p.quote}”
+        </blockquote>
+        <p className="mt-6 leading-relaxed text-neutral-300">{p.description}</p>
+        <ol className="mt-10 border-b border-white/15">
+          {p.lessons.map((l, i) => (
+            <li key={l.title} className="grid gap-2 border-t border-white/15 py-5 sm:grid-cols-[48px_200px_1fr] sm:gap-6">
+              <span className="text-sm text-neutral-500">0{i + 1}</span>
+              <h5 className="font-semibold text-white">{l.title}</h5>
+              <p className="leading-relaxed text-neutral-300">{l.body}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
     </li>
   )
 }
 
 function Group({ title, intro, children }) {
   return (
-    <div className="mt-20 first:mt-0">
+    <div className="mt-20 border-t border-white/20 pt-16 first:mt-0 first:border-0 first:pt-0">
       <h3 className="flex items-center gap-2.5 font-display text-2xl font-bold tracking-tight text-white">
         <span aria-hidden="true" className="h-1.5 w-1.5 bg-[#a51c30]" />
         {title}
@@ -147,7 +151,7 @@ export default function App() {
       <Hero />
       <LifeTimeline />
 
-      <main className="mx-auto max-w-5xl divide-y divide-white/[0.08] px-5">
+      <main className="mx-auto max-w-5xl divide-y divide-white/20 px-5">
         <Section id="projects" title="work">
           <Group
             title="initiatives"
