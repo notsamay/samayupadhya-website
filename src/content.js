@@ -6,10 +6,10 @@ export const profile = {
     'I build products people actually want to use — from mobile apps to the tools behind them.',
   intro: 'Computer science and economics student at UW–Madison, building Chapter Room.',
   location: 'Madison, WI',
-  email: 'supadhya@live.com',
+  email: 'samayupadhya@gmail.com',
   links: [
     { label: 'GitHub', href: 'https://github.com/notsamay' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/samay-upadhya-622b53305' },
   ],
 }
 
