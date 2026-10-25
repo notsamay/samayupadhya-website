@@ -12,7 +12,7 @@ function Photo({ photo, className = '' }) {
         src={photo.src.startsWith('/') ? import.meta.env.BASE_URL + photo.src.slice(1) : photo.src}
         alt={photo.caption}
         loading="lazy"
-        className={`w-full rounded-xl object-cover opacity-80 ring-1 ring-white/10 brightness-90 saturate-[.7] transition-[filter,opacity] duration-500 group-hover:opacity-100 group-hover:brightness-100 group-hover:saturate-100 ${className}`}
+        className={`w-full rounded-md object-cover opacity-80 brightness-90 saturate-[.7] transition-[filter,opacity] duration-500 group-hover:opacity-100 group-hover:brightness-100 group-hover:saturate-100 ${className}`}
       />
     )
   }
@@ -25,14 +25,14 @@ function Photo({ photo, className = '' }) {
   )
 }
 
-function Meta({ item, size = 'text-4xl' }) {
+function Meta({ item, size = 'text-4xl md:text-5xl' }) {
   return (
     <>
       <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
         <span className={`font-display font-bold tracking-tight text-white ${size}`}>{item.year}</span>
         <span className="text-sm text-neutral-500">{item.meta}</span>
       </div>
-      <h3 className="mt-2 text-xl font-semibold text-white md:text-2xl">{item.title}</h3>
+      <h3 className="mt-3 text-xl font-semibold text-white md:text-2xl">{item.title}</h3>
     </>
   )
 }
@@ -42,18 +42,18 @@ function Card({ item }) {
   // in the row instead of stretching to the full card height.
   if (!item.photo) {
     return (
-      <article className="flex flex-col md:w-[min(85vw,540px)]">
+      <article className="flex flex-col md:w-[min(85vw,620px)]">
         <Meta item={item} />
-        <p className="mt-3 text-[15px] leading-relaxed text-neutral-300">{item.body}</p>
+        <p className="mt-4 text-base leading-relaxed text-neutral-300">{item.body}</p>
       </article>
     )
   }
   return (
-    <article className="group flex flex-col gap-6 md:grid md:w-[min(85vw,660px)] md:grid-cols-[200px_1fr] md:items-center md:gap-7">
+    <article className="group flex flex-col gap-6 md:grid md:w-[min(85vw,820px)] md:grid-cols-[250px_1fr] md:items-center md:gap-10">
       <Photo photo={item.photo} className="aspect-video md:aspect-[4/5]" />
       <div>
         <Meta item={item} />
-        <p className="mt-3 text-[15px] leading-relaxed text-neutral-300">{item.body}</p>
+        <p className="mt-4 text-base leading-relaxed text-neutral-300">{item.body}</p>
       </div>
     </article>
   )
@@ -63,8 +63,6 @@ export default function LifeTimeline() {
   const sectionRef = useRef(null)
   const trackRef = useRef(null)
   const cardsRef = useRef([])
-  const lineRef = useRef(null)
-  const fillRef = useRef(null)
   const geometry = useRef({ enabled: false, distance: 0, offsets: [] })
   const [active, setActive] = useState(0)
   // How many entries have scrolled into view; they fade in as they arrive.
@@ -101,9 +99,6 @@ export default function LifeTimeline() {
       const p = scrollable > 0 ? Math.min(1, Math.max(0, -section.getBoundingClientRect().top / scrollable)) : 0
       const x = p * g.distance
       track.style.transform = `translate3d(${-x}px, 0, 0)`
-      // The line fills up to the middle of the screen.
-      const line = lineRef.current
-      fillRef.current.style.width = `${Math.min(line.offsetWidth, Math.max(0, x + window.innerWidth / 2 - line.offsetLeft))}px`
       const n = cardsRef.current.filter((el) => el.offsetLeft - x < window.innerWidth * 0.85).length
       setShown((prev) => (prev === n ? prev : n))
       let i = 0
@@ -203,13 +198,10 @@ export default function LifeTimeline() {
         >
           {/* Center line (desktop only); runs from the intro to "what's next" */}
           <div
-            ref={lineRef}
             aria-hidden="true"
-            className="absolute top-1/2 hidden h-0.5 -translate-y-1/2 bg-white/10 md:block"
+            className="absolute top-1/2 hidden h-px -translate-y-1/2 bg-white/15 md:block"
             style={{ left: gutter, right: gutter }}
-          >
-            <div ref={fillRef} className="h-full w-0 bg-white/50" />
-          </div>
+          />
 
           <div className="relative flex shrink-0 flex-col justify-center bg-ink pb-6 md:mr-16 md:w-[min(85vw,360px)] md:pb-0 md:pr-6">
             <h2 className="flex items-center gap-3 font-display text-4xl font-bold tracking-tight text-white">
@@ -235,9 +227,9 @@ export default function LifeTimeline() {
               <div
                 key={item.year}
                 ref={(el) => (cardsRef.current[i] = el)}
-                className={`relative shrink-0 md:flex md:h-full md:flex-col ${i > 0 ? 'md:-ml-32' : ''}`}
+                className={`relative shrink-0 md:flex md:h-full md:flex-col ${i > 0 ? 'md:-ml-24' : ''}`}
               >
-                <div className={`md:flex md:h-1/2 md:flex-col ${above ? 'md:justify-end md:pb-7' : 'md:mt-auto md:justify-start md:pt-7'}`}>
+                <div className={`md:flex md:h-1/2 md:flex-col ${above ? 'md:justify-end md:pb-12' : 'md:mt-auto md:justify-start md:pt-12'}`}>
                   <div className={reveal}>
                     <Card item={item} />
                   </div>
@@ -245,11 +237,11 @@ export default function LifeTimeline() {
                 {/* Stem from the card to its mark on the line */}
                 <span
                   aria-hidden="true"
-                  className={`absolute left-1/2 hidden h-7 w-px transition-[opacity,background-color] duration-700 md:block ${above ? 'bottom-1/2' : 'top-1/2'} ${
+                  className={`absolute left-1/2 hidden h-12 w-px bg-white/15 transition-opacity duration-700 md:block ${above ? 'bottom-1/2' : 'top-1/2'} ${
                     visible ? 'opacity-100' : 'opacity-0'
-                  } ${i <= active ? 'bg-white/40' : 'bg-white/15'}`}
+                  }`}
                 />
-                {/* Mark: a dot that turns white once reached; only the active entry is red, with a halo */}
+                {/* Mark: a plain dot; only the current entry's is red */}
                 <button
                   type="button"
                   onClick={() => jumpTo(i)}
@@ -258,24 +250,11 @@ export default function LifeTimeline() {
                 >
                   <span
                     aria-hidden="true"
-                    className={`absolute h-7 w-7 rounded-full border border-[#a51c30]/60 bg-[#a51c30]/10 transition-[opacity,transform] duration-500 ${
-                      i === active ? 'scale-100 opacity-100' : 'scale-50 opacity-0'
+                    className={`h-2 w-2 rounded-full transition-colors duration-300 ${
+                      i === active ? 'bg-[#a51c30]' : 'bg-neutral-500 group-hover/mark:bg-white'
                     }`}
                   />
-                  <span
-                    aria-hidden="true"
-                    className={`relative rounded-full ring-4 ring-ink transition-[background-color,width,height] duration-300 ${
-                      i === active ? 'h-3 w-3 bg-[#a51c30]' : 'h-2.5 w-2.5'
-                    } ${i < active ? 'bg-white' : i > active ? 'bg-neutral-600 group-hover/mark:bg-neutral-400' : ''}`}
-                  />
                 </button>
-                <span
-                  className={`absolute left-1/2 hidden -translate-x-1/2 whitespace-nowrap text-xs transition-colors md:block ${
-                    above ? 'top-[calc(50%+18px)]' : 'bottom-[calc(50%+18px)]'
-                  } ${i === active ? 'text-white' : 'text-neutral-500'}`}
-                >
-                  {item.year}
-                </span>
               </div>
             )
           })}

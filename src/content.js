@@ -26,9 +26,9 @@ export const initiatives = [
   },
   {
     title: 'Renew 222',
-    year: '2025',
+    year: '2025–present',
     description:
-      "I founded Renew 222, the capital campaign to restore Acacia's chapter house at 222 Langdon Street, a Tudor Revival home built in 1926. The chapter has grown from 17 brothers to 137 in under a decade, the largest in its 120-year history, and needs a house to match. We've raised $12,000 in seed funding so far. As senior undergraduate chairman, I lead the campaign alongside the alumni board and co-built its site, which reconnects alumni and takes donations online, including a $190.60-a-year 1906 Club honoring the chapter's founding.",
+      "I founded Renew 222, the capital campaign to restore Acacia's chapter house at 222 Langdon Street, a Tudor Revival home built in 1926. When I took office, the chapter had no real connection to its alumni. Since then we've reconnected more than 200 of them, raised $12,000 in seed funding, and set up a capital fund for 5 renovation projects. The chapter has grown from 17 brothers to 137 in under a decade, the largest in its 120-year history, and it needs a house to match. I lead the campaign as senior undergraduate chairman alongside the alumni board, and co-built its site.",
     tags: ['Next.js', 'Supabase'],
     href: 'https://renew222.org',
   },
