@@ -209,7 +209,7 @@ export default function LifeTimeline() {
               timeline
             </h2>
             <p className="mt-4 max-w-xs text-lg leading-relaxed text-neutral-400">
-              twelve years of making things, from minecraft mods to chapter room.
+              Twelve years of building, from Minecraft mods to Chapter Room.
             </p>
             <p className="mt-8 hidden text-sm text-neutral-500 md:block">scroll or drag →</p>
           </div>

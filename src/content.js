@@ -1,11 +1,7 @@
 // Edit this file to update everything on the site.
 export const profile = {
   name: 'Samay Upadhya',
-  role: 'Developer & founder',
-  tagline:
-    'I build products people actually want to use — from mobile apps to the tools behind them.',
-  intro: 'Computer science and economics student at UW–Madison, building Chapter Room.',
-  location: 'Madison, WI',
+  intro: 'Computer science and economics student at UW–Madison and founder of Chapter Room.',
   email: 'samayupadhya@gmail.com',
   links: [
     { label: 'GitHub', href: 'https://github.com/notsamay' },
@@ -20,7 +16,7 @@ export const initiatives = [
     title: 'Chapter Room',
     year: '2026',
     description:
-      "The modern operating system for Greek life. Feeds and group chats, roles and permissions, geofenced attendance, dues, and shared albums all live in one app. I'm building it end to end in Flutter and Supabase, with chapters at 3 schools (UW–Madison, South Carolina, and Clemson) launching on iOS and Android in spring 2027.",
+      "An operating system for Greek life that brings feeds and group chats, roles and permissions, geofenced attendance, dues, and shared albums into a single app. I'm building it end to end in Flutter and Supabase, with chapters at three schools (UW–Madison, South Carolina, and Clemson) launching on iOS and Android in spring 2027.",
     tags: ['Flutter', 'Supabase', 'iOS', 'Android'],
     href: 'https://joinchapterroom.com',
   },
@@ -28,7 +24,7 @@ export const initiatives = [
     title: 'Renew 222',
     year: '2025–present',
     description:
-      "I founded Renew 222, the capital campaign to restore Acacia's chapter house at 222 Langdon Street, a Tudor Revival home built in 1926. When I took office, the chapter had no real connection to its alumni. Since then we've reconnected more than 200 of them, raised $12,000 in seed funding, and set up a capital fund for 5 renovation projects. The chapter has grown from 17 brothers to 137 in under a decade, the largest in its 120-year history, and it needs a house to match. I lead the campaign as senior undergraduate chairman alongside the alumni board, and co-built its site.",
+      "I founded Renew 222, a capital campaign to restore Acacia's chapter house at 222 Langdon Street, a Tudor Revival home built in 1926. When I took office, the chapter had no active connection with its alumni. Since then, we have reconnected more than 200 alumni, raised $12,000 in seed funding, and established a capital fund for five renovation projects. The chapter has grown from 17 to 137 brothers in under a decade, the largest in its 120-year history, and needs a house to match. I lead the campaign as senior undergraduate chairman alongside the alumni board and co-built its website.",
     tags: ['Next.js', 'Supabase'],
     href: 'https://renew222.org',
   },
@@ -36,7 +32,7 @@ export const initiatives = [
     title: 'Himalayan Hacks',
     year: '2023',
     description:
-      'Computer education and basic programming for kids in rural Nepal, run with the Ek Artha Foundation. We raised around $10,000, donated a computer lab, and ran a two-day computer camp in Manahari Rural Municipality.',
+      'A program bringing computer education and introductory programming to children in rural Nepal, run in partnership with the Ek Artha Foundation. We raised about $10,000, donated a computer lab, and ran a two-day computer camp in Manahari Rural Municipality.',
     tags: ['Python', 'Pygame', 'HTML', 'CSS', 'JavaScript'],
     href: 'archive/himalayan-hacks/',
     archived: true,
@@ -48,7 +44,7 @@ export const projects = [
     title: 'Dreamer',
     year: '2024',
     description:
-      'A learning app for autistic kids, built solo in Flutter with a developmental psychologist. Each lesson adapts to the child through audio, animation, and haptics. It won the 2023 Congressional App Challenge for South Carolina\'s 5th District and was displayed in the U.S. Capitol.',
+      'A learning app for autistic children, which I built on my own in Flutter in consultation with a developmental psychologist. Each lesson adapts to the child through audio, animation, and haptics. It won the 2023 Congressional App Challenge for South Carolina\'s 5th District and was displayed in the U.S. Capitol.',
     tags: ['Flutter', 'Swift'],
     href: 'https://github.com/notsamay/DreamerCAC',
     linkLabel: 'view code',
@@ -56,7 +52,7 @@ export const projects = [
   {
     title: 'Do You Dare To Square',
     description:
-      "A remake of my original 2019 Brackeys Game Jam submission. I hadn't touched game design in years, and I wanted to see how far I've come as a developer.",
+      "A remake of my 2019 Brackeys Game Jam submission. After years away from game design, I rebuilt it to measure how far I've come as a developer.",
     tags: [],
   },
 ]
@@ -68,11 +64,11 @@ export const scarTissue = [
     year: '2024',
     status: 'failed',
     description:
-      "A Hack Club hackathon for teens in Charleston that I organized from scratch, from cold emailing sponsors and venues to building the team and making the site. It failed, and it's the project I learned the most from.",
+      "A Hack Club hackathon for high school students in Charleston that I organized from the ground up, from cold emailing sponsors and venues to recruiting a team and building the website. It did not succeed, and it remains the project I have learned the most from.",
     story: [
-      'Castaways is my greatest scar tissue. It taught me more than anything that went smoothly.',
-      "It's where I learned to cold email: reaching out to sponsors, venues, and partners who had never heard of me, and figuring out what actually earns a reply. It's also where I learned what running an organization takes, from delegating and following up to keeping people committed when nothing is guaranteed.",
-      "Most of all, it taught me that things need to start small and grow naturally. You can't skip straight to the big version. Everything I've built since has been shaped by that lesson.",
+      'Castaways is my greatest scar tissue. It taught me more than any project that went smoothly.',
+      'It is where I learned to cold email: reaching out to sponsors, venues, and partners who had never heard of me, and learning what earns a reply. It is also where I learned what running an organization requires, from delegating and following up to keeping people committed when nothing is guaranteed.',
+      'Above all, it taught me that ambitious things need to start small and grow naturally. There is no skipping straight to the big version, and that lesson has shaped everything I have built since.',
     ],
     tags: ['Next.js', 'Tailwind'],
     href: 'archive/castaways/',
@@ -87,63 +83,63 @@ export const timeline = [
     year: '2014',
     meta: 'age 7 · 2nd grade',
     title: 'First lines of code',
-    body: "Bored with regular Minecraft and eager to expand my horizons, I signed up for Youth Digital's Minecraft modding course. It was my first introduction to programming, and it's where I wrote my first lines of Java.",
-    photo: { src: '/timeline/web/minecraft-mods.jpg', caption: 'youth digital minecraft mod' },
+    body: "Eager to do more with Minecraft than play it, I enrolled in Youth Digital's Minecraft modding course. It was my introduction to programming and where I wrote my first lines of Java.",
+    photo: { src: '/timeline/web/minecraft-mods.jpg', caption: 'Youth Digital Minecraft modding course' },
   },
   {
     year: '2015–18',
     meta: 'the unity years',
     title: 'Learning to build games',
-    body: "Modding turned into Unity. I spent these years writing C# and building my own games, learning from Brackeys and Blackthornprod and applying their lessons to my own ideas. Most of my ambitious plans never shipped, but this is where my love for building took off, and where I entered my first hackathon, the Brackeys Game Jam.",
+    body: "Modding led to Unity. I spent these years writing C# and building my own games, learning from Brackeys and Blackthornprod and applying their lessons to my own ideas. Many of my more ambitious plans never shipped, but this is where my love for building began, and where I entered my first hackathon, the Brackeys Game Jam.",
     photo: null,
   },
   {
     year: '2019',
     meta: 'first lego league',
     title: 'Best programming',
-    body: "I kept making games on my own and joined FIRST LEGO League, where teams design, build, and program LEGO robots to complete missions. Our team won the programming award at the South Carolina state championship.",
-    photo: { src: '/timeline/web/fll.jpg', caption: 'fll state championship' },
+    body: "While continuing to make games, I joined FIRST LEGO League, where teams design, build, and program LEGO robots to complete missions. Our team won the programming award at the South Carolina state championship.",
+    photo: { src: '/timeline/web/fll.jpg', caption: 'FIRST LEGO League state championship' },
   },
   {
     year: '2020–22',
     meta: 'the covid years',
     title: 'Learning the web',
-    body: "The COVID years were quiet. I didn't build much during the pandemic, but I did pick up React and Tailwind and learned the basics of web development, skills I still use today, including on this site.",
+    body: "The pandemic years were quieter. I built less, but I learned React, Tailwind, and the fundamentals of web development, skills I still use today, including on this site.",
     photo: null,
   },
   {
     year: '2022–23',
     meta: 'hack club',
     title: 'Back to building',
-    body: "In 2022, fresh off a torn ACL, I threw myself back into building and found Hack Club. Through Hack Club I competed in hackathons across the US and Canada, from local events to Boston and Toronto. That era made me want to organize something big of my own.",
-    photo: { src: '/timeline/web/hack-club.jpg', caption: 'hackathon in boston or toronto' },
+    body: "In 2022, while recovering from a torn ACL, I returned to building and found Hack Club. Through Hack Club, I competed in hackathons across the US and Canada, from local events to Boston and Toronto. That experience made me want to organize something of my own.",
+    photo: { src: '/timeline/web/hack-club.jpg', caption: 'Hack Club hackathon' },
   },
   {
     year: 'late 2023',
     meta: 'ek artha foundation',
     title: 'Himalayan Hacks',
-    body: "I partnered with the Ek Artha Foundation, an NGO in Nepal, to launch Himalayan Hacks, which brings computer education and basic programming to kids in rural Nepal. We raised around $10,000, donated a computer lab, and ran a two-day computer camp in Manahari Rural Municipality.",
-    photo: { src: '/timeline/web/himalayan-hacks.jpg', caption: 'computer camp in manahari' },
+    body: "I partnered with the Ek Artha Foundation, an NGO in Nepal, to launch Himalayan Hacks, which brings computer education and introductory programming to children in rural Nepal. We raised about $10,000, donated a computer lab, and ran a two-day computer camp in Manahari Rural Municipality.",
+    photo: { src: '/timeline/web/himalayan-hacks.jpg', caption: 'Computer camp in Manahari' },
   },
   {
     year: '2024',
     meta: 'congressional app challenge',
     title: 'Dreamer',
-    body: "My little cousin is autistic, and traditional teaching doesn't fit how my cousin learns. In 11th grade I built Dreamer solo in Flutter, working with a developmental psychologist to adapt each lesson to the child through audio, animation, and haptics. It won the 2023 Congressional App Challenge for South Carolina's 5th District and was displayed in the U.S. Capitol.",
-    photo: { src: '/timeline/web/dreamer.jpg', caption: 'dreamer at the u.s. capitol' },
+    body: "My younger cousin is autistic, and traditional teaching does not fit the way my cousin learns. In 11th grade, I built Dreamer on my own in Flutter, working with a developmental psychologist to adapt each lesson to the child through audio, animation, and haptics. It won the 2023 Congressional App Challenge for South Carolina's 5th District and was displayed in the U.S. Capitol.",
+    photo: { src: '/timeline/web/dreamer.jpg', caption: 'Congressional App Challenge award' },
   },
   {
     year: '2025',
     meta: 'uw–madison · acacia',
     title: 'A new home',
-    body: "After graduating from high school, I moved to Madison to study computer science and economics at UW–Madison. I joined Acacia Fraternity and became the only freshman on the executive board, as secretary. I restarted alumni outreach, launched Renew 222, a capital campaign for our chapter house, started a career incubator, and now run the house's external communications and PR.",
-    photo: { src: '/timeline/web/wisconsin.jpg', caption: 'new member of the year award' },
+    body: "After high school, I moved to Madison to study computer science and economics at UW–Madison. I joined Acacia Fraternity and became the only freshman on its executive board, serving as secretary. I restarted alumni outreach, founded Renew 222, a capital campaign for our chapter house, started a career incubator, and now lead the chapter's external communications and public relations.",
+    photo: { src: '/timeline/web/wisconsin.jpg', caption: 'New Member of the Year award' },
   },
   {
     year: '2026',
     meta: 'founder',
     title: 'Chapter Room',
-    body: "I started Chapter Room, the modern operating system for Greek life. Feeds and group chats, roles and permissions, geofenced attendance, dues, and shared albums all live in one app. I'm building it end to end in Flutter and Supabase, launching at UW–Madison, South Carolina, and Clemson in spring 2027.",
+    body: "I founded Chapter Room, an operating system for Greek life that brings feeds and group chats, roles and permissions, geofenced attendance, dues, and shared albums into a single app. I'm building it end to end in Flutter and Supabase, launching at UW–Madison, South Carolina, and Clemson in spring 2027.",
     photo: null,
   },
 ]

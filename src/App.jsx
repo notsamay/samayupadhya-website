@@ -156,7 +156,7 @@ export default function App() {
         <Section id="projects" title="work">
           <Group
             title="initiatives"
-            intro="the bigger things i've started, the ones that pulled other people in: a company, a capital campaign, and a nonprofit."
+            intro="Organizations I have founded or led that bring other people together: a company, a capital campaign, and a nonprofit program."
           >
             <ul className="grid gap-x-12 md:grid-cols-2">
               {initiatives.map((p) => (
@@ -164,14 +164,14 @@ export default function App() {
               ))}
             </ul>
           </Group>
-          <Group title="projects" intro="things i built by myself.">
+          <Group title="projects" intro="Software I designed and built independently.">
             <ul>
               {projects.map((p) => (
                 <ProjectRow key={p.title} p={p} />
               ))}
             </ul>
           </Group>
-          <Group title="scar tissue" intro="the things that failed, and what they taught me.">
+          <Group title="scar tissue" intro="Efforts that did not succeed, and what they taught me.">
             <ul>
               {scarTissue.map((p) => (
                 <ScarEntry key={p.title} p={p} />
@@ -182,11 +182,11 @@ export default function App() {
 
         <Section id="connect" title="contact">
           <p className="max-w-xl text-lg leading-relaxed text-neutral-300">
-            the best way to reach me is email, at{' '}
+            For opportunities, collaborations, or questions, email me at{' '}
             <a href={`mailto:${profile.email}`} className={textLink}>
               {profile.email}
             </a>
-            . you can also find me on{' '}
+            . I am also on{' '}
             {profile.links.map((l, i) => (
               <span key={l.label}>
                 {i > 0 && ' and '}
