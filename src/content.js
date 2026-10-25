@@ -68,6 +68,12 @@ export const projects = [
     href: 'https://github.com/notsamay/DreamerCAC',
     linkLabel: 'view code',
   },
+  {
+    title: 'Do You Dare To Square',
+    description:
+      "A remake of my original 2019 Brackeys Game Jam submission. I hadn't touched game design in years, and I wanted to see how far I've come as a developer.",
+    tags: [],
+  },
 ]
 
 // Life timeline, oldest first. Add a photo by dropping it in public/timeline/

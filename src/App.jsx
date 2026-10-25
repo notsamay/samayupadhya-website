@@ -71,22 +71,35 @@ function Entry({ p }) {
             ))}
           </div>
         )}
-        <p className="mt-5 font-mono text-xs text-neutral-500">{p.tags.join('  ·  ')}</p>
-        <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2">
-          <a
-            href={p.archived ? import.meta.env.BASE_URL + p.href : p.href}
-            {...(p.archived ? {} : { target: '_blank', rel: 'noreferrer' })}
-            className="group inline-flex items-center gap-2 rounded-lg border border-white/15 px-4 py-2 text-sm text-white transition-colors hover:border-white/40 hover:bg-white/[0.05]"
-          >
-            {p.linkLabel ?? 'view site'}
-            <span className={arrow}>↗</span>
-          </a>
-          {p.archived && (
-            <span className="font-mono text-xs text-neutral-500">
-              archived copy of the original site, so it may be slightly broken
-            </span>
-          )}
-        </div>
+        {p.tags.length > 0 && (
+          <div className="mt-5">
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-neutral-500">built with</p>
+            <ul className="mt-2 flex flex-wrap gap-2">
+              {p.tags.map((t) => (
+                <li key={t} className="rounded-md bg-white/[0.06] px-2 py-1 font-mono text-xs text-neutral-300">
+                  {t}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {p.href && (
+          <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2">
+            <a
+              href={p.archived ? import.meta.env.BASE_URL + p.href : p.href}
+              {...(p.archived ? {} : { target: '_blank', rel: 'noreferrer' })}
+              className="group inline-flex items-center gap-2 rounded-lg border border-white/15 px-4 py-2 text-sm text-white transition-colors hover:border-white/40 hover:bg-white/[0.05]"
+            >
+              {p.linkLabel ?? 'view site'}
+              <span className={arrow}>↗</span>
+            </a>
+            {p.archived && (
+              <span className="font-mono text-xs text-neutral-500">
+                archived copy of the original site, so it may be slightly broken
+              </span>
+            )}
+          </div>
+        )}
       </div>
     </li>
   )
