@@ -20,7 +20,7 @@ html {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(ellipse at center, transparent 50%, rgb(0 0 0 / 0.5) 100%);
+  background: radial-gradient(ellipse at center, transparent 50%, rgb(20 2 5 / 0.45) 100%);
 }
 
 /* Eased fade from the hero pattern into the page black (many stops = no banding) */
