@@ -23,6 +23,7 @@ export default function Header() {
             className={`whitespace-nowrap font-display text-base font-bold normal-case leading-5 text-white transition-opacity duration-300 ${atTop ? 'opacity-0' : 'opacity-100'}`}
           >
             {profile.name}
+            <span aria-hidden="true" className="ml-1 inline-block h-1.5 w-1.5 bg-[#a51c30]" />
           </span>
         </a>
         <nav className="flex items-center gap-6">

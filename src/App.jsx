@@ -1,4 +1,4 @@
-import { initiatives, profile, projects } from './content'
+import { initiatives, profile, projects, scarTissue } from './content'
 import Header from './components/Header'
 import LifeTimeline from './components/LifeTimeline'
 import PixelBackground from './PixelBackground'
@@ -35,13 +35,16 @@ function Hero() {
 function Section({ id, title, children }) {
   return (
     <section id={id} className="scroll-mt-20 py-20 sm:py-24">
-      <h2 className="font-display text-4xl font-bold tracking-tight text-white">{title}</h2>
+      <h2 className="flex items-center gap-3 font-display text-4xl font-bold tracking-tight text-white">
+        <span aria-hidden="true" className="h-2 w-2 bg-[#a51c30]" />
+        {title}
+      </h2>
       <div className="mt-10">{children}</div>
     </section>
   )
 }
 
-const textLink = 'text-white underline decoration-white/40 underline-offset-4 transition-colors hover:decoration-white'
+const textLink = 'text-white underline decoration-white/40 underline-offset-4 transition-colors hover:decoration-[#a51c30]'
 
 // Archived entries open old copies hosted on this site; everything else opens in a new tab.
 function EntryLink({ p }) {
@@ -104,7 +107,10 @@ function ProjectRow({ p }) {
 function Group({ title, intro, children }) {
   return (
     <div className="mt-20 first:mt-0">
-      <h3 className="font-display text-2xl font-bold tracking-tight text-white">{title}</h3>
+      <h3 className="flex items-center gap-2.5 font-display text-2xl font-bold tracking-tight text-white">
+        <span aria-hidden="true" className="h-1.5 w-1.5 bg-[#a51c30]" />
+        {title}
+      </h3>
       <p className="mt-3 max-w-2xl text-lg leading-relaxed text-neutral-400">{intro}</p>
       <div className="mt-8">{children}</div>
     </div>
@@ -122,7 +128,7 @@ export default function App() {
         <Section id="projects" title="work">
           <Group
             title="initiatives"
-            intro="the bigger things i've started, the ones that pulled other people in: a company, a capital campaign, a nonprofit, and a hackathon that didn't work out."
+            intro="the bigger things i've started, the ones that pulled other people in: a company, a capital campaign, and a nonprofit."
           >
             <ul className="grid gap-x-12 md:grid-cols-2">
               {initiatives.map((p) => (
@@ -134,6 +140,13 @@ export default function App() {
             <ul>
               {projects.map((p) => (
                 <ProjectRow key={p.title} p={p} />
+              ))}
+            </ul>
+          </Group>
+          <Group title="scar tissue" intro="the things that failed, and what they taught me.">
+            <ul className="max-w-2xl">
+              {scarTissue.map((p) => (
+                <Entry key={p.title} p={p} />
               ))}
             </ul>
           </Group>

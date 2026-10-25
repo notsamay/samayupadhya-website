@@ -41,21 +41,6 @@ export const initiatives = [
     href: 'archive/himalayan-hacks/',
     archived: true,
   },
-  {
-    title: 'Castaways',
-    year: '2024',
-    status: 'failed',
-    description:
-      "A Hack Club hackathon for teens in Charleston that I organized from scratch, from cold emailing sponsors and venues to building the team and making the site. It failed, and it's the project I learned the most from.",
-    story: [
-      'Castaways is my greatest scar tissue. It taught me more than anything that went smoothly.',
-      "It's where I learned to cold email: reaching out to sponsors, venues, and partners who had never heard of me, and figuring out what actually earns a reply. It's also where I learned what running an organization takes, from delegating and following up to keeping people committed when nothing is guaranteed.",
-      "Most of all, it taught me that things need to start small and grow naturally. You can't skip straight to the big version. Everything I've built since has been shaped by that lesson.",
-    ],
-    tags: ['Next.js', 'Tailwind'],
-    href: 'archive/castaways/',
-    archived: true,
-  },
 ]
 
 export const projects = [
@@ -73,6 +58,25 @@ export const projects = [
     description:
       "A remake of my original 2019 Brackeys Game Jam submission. I hadn't touched game design in years, and I wanted to see how far I've come as a developer.",
     tags: [],
+  },
+]
+
+// Things that failed, and what they taught me.
+export const scarTissue = [
+  {
+    title: 'Castaways',
+    year: '2024',
+    status: 'failed',
+    description:
+      "A Hack Club hackathon for teens in Charleston that I organized from scratch, from cold emailing sponsors and venues to building the team and making the site. It failed, and it's the project I learned the most from.",
+    story: [
+      'Castaways is my greatest scar tissue. It taught me more than anything that went smoothly.',
+      "It's where I learned to cold email: reaching out to sponsors, venues, and partners who had never heard of me, and figuring out what actually earns a reply. It's also where I learned what running an organization takes, from delegating and following up to keeping people committed when nothing is guaranteed.",
+      "Most of all, it taught me that things need to start small and grow naturally. You can't skip straight to the big version. Everything I've built since has been shaped by that lesson.",
+    ],
+    tags: ['Next.js', 'Tailwind'],
+    href: 'archive/castaways/',
+    archived: true,
   },
 ]
 
