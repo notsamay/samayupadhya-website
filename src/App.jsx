@@ -68,11 +68,6 @@ function Entry({ p }) {
         {p.year && <span className="ml-2 font-normal text-neutral-500">{p.year}</span>}
       </h4>
       <p className="mt-2 leading-relaxed text-neutral-300">{p.description}</p>
-      {p.details?.map((d) => (
-        <p key={d} className="mt-3 leading-relaxed text-neutral-300">
-          {d}
-        </p>
-      ))}
       {p.tags.length > 0 && <p className="mt-4 text-sm text-neutral-500">built with {p.tags.join(', ')}</p>}
       {p.href && (
         <p className="mt-3 text-sm">

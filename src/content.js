@@ -16,7 +16,7 @@ export const initiatives = [
     title: 'Chapter Room',
     year: '2026',
     description:
-      "An operating system for Greek life that brings feeds and group chats, roles and permissions, geofenced attendance, dues, and shared albums into a single app. I'm building it end to end in Flutter and Supabase, with chapters at three schools (UW–Madison, South Carolina, and Clemson) launching on iOS and Android in spring 2027.",
+      "An operating system for Greek life that brings group chats, roles and permissions, geofenced attendance, dues, and shared albums into one app. I'm building it end to end in Flutter and Supabase, with chapters at UW–Madison, South Carolina, and Clemson launching on iOS and Android in spring 2027.",
     tags: ['Flutter', 'Supabase', 'iOS', 'Android'],
     href: 'https://joinchapterroom.com',
   },
@@ -24,11 +24,7 @@ export const initiatives = [
     title: 'Renew 222',
     year: '2026–present',
     description:
-      "I founded Renew 222 in January 2026 to raise the capital to restore 222 Langdon Street, the home of Acacia's Lamedth chapter at UW–Madison, in time for the house's centennial. When I took office, the chapter had no active connection with its alumni. Since then, we have reconnected more than 200 alumni and raised $12,000 in seed funding.",
-    details: [
-      'A 2009 renovation converted the house into apartments. Now that it is a fraternity house again, and the chapter has grown from 17 to 137 brothers in under a decade, the campaign aims to restore its original character and make it a complete home for about 35 residents. The five priority projects are an Alumni Terrace on the front lawn, basement bathrooms with keypad access to separate event and living spaces, a TV room, a third-floor alumni lounge, and dedicated study rooms, each with a naming opportunity for donors.',
-      "As senior undergraduate chairman, I co-built renew222.org, set up the campaign's donor and pledge tracking, and organized a team of 15 solicitors to reach roughly 500 alumni. Long term, I am building Renew 222 into a lasting organization, with regular alumni newsletters, construction weeks that bring alumni back to work on the house, and a career incubator that connects brothers across generations.",
-    ],
+      "I founded Renew 222 in January 2026 to restore Acacia's chapter house at 222 Langdon Street in time for its centennial. Starting with no active alumni connection, we have reconnected more than 200 alumni, raised $12,000 in seed funding, and organized 15 solicitors to reach about 500 more, all toward five renovation projects.",
     tags: ['Next.js', 'Supabase'],
     href: 'https://renew222.org',
   },
@@ -36,7 +32,7 @@ export const initiatives = [
     title: 'Himalayan Hacks',
     year: '2023',
     description:
-      'A program bringing computer education and introductory programming to children in rural Nepal, run in partnership with the Ek Artha Foundation. We raised about $10,000, donated a computer lab, and ran a two-day computer camp in Manahari Rural Municipality.',
+      'A program bringing computer education and introductory programming to children in rural Nepal, run in partnership with the Ek Artha Foundation. The curriculum taught Python through game development with Pygame. We raised about $10,000, donated a computer lab, and ran a two-day computer camp in Manahari Rural Municipality.',
     tags: ['Python', 'Pygame', 'HTML', 'CSS', 'JavaScript'],
     href: 'archive/himalayan-hacks/',
     archived: true,
