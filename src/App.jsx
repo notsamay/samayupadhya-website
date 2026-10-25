@@ -104,6 +104,34 @@ function ProjectRow({ p }) {
   )
 }
 
+// A failure, spread across the page: what it was on the left, what it taught me on the right.
+function ScarEntry({ p }) {
+  return (
+    <li className="grid gap-6 border-t border-white/[0.08] py-7 md:grid-cols-2 md:gap-12">
+      <div>
+        <h4 className="text-lg font-semibold text-white">
+          {p.title}
+          {p.year && <span className="ml-2 font-normal text-neutral-500">{p.year}</span>}
+          {p.status && <span className="ml-2 font-normal text-white">({p.status})</span>}
+        </h4>
+        <p className="mt-2 leading-relaxed text-neutral-300">{p.description}</p>
+        {p.tags.length > 0 && <p className="mt-4 text-sm text-neutral-500">built with {p.tags.join(', ')}</p>}
+        {p.href && (
+          <p className="mt-3 text-sm">
+            <EntryLink p={p} />
+            {p.archived && <span className="text-neutral-500"> (an archived copy, so it may be slightly broken)</span>}
+          </p>
+        )}
+      </div>
+      <div className="space-y-3 leading-relaxed text-white">
+        {p.story.map((para) => (
+          <p key={para}>{para}</p>
+        ))}
+      </div>
+    </li>
+  )
+}
+
 function Group({ title, intro, children }) {
   return (
     <div className="mt-20 first:mt-0">
@@ -144,9 +172,9 @@ export default function App() {
             </ul>
           </Group>
           <Group title="scar tissue" intro="the things that failed, and what they taught me.">
-            <ul className="max-w-2xl">
+            <ul>
               {scarTissue.map((p) => (
-                <Entry key={p.title} p={p} />
+                <ScarEntry key={p.title} p={p} />
               ))}
             </ul>
           </Group>
