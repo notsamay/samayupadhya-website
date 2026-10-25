@@ -8,7 +8,7 @@ export const profile = {
   location: 'Madison, WI',
   email: 'supadhya@live.com',
   links: [
-    { label: 'GitHub', href: 'https://github.com/' },
+    { label: 'GitHub', href: 'https://github.com/notsamay' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/' },
   ],
 }
@@ -37,7 +37,7 @@ export const initiatives = [
     year: '2023',
     description:
       'Computer education and basic programming for kids in rural Nepal, run with the Ek Artha Foundation. We raised around $10,000, donated a computer lab, and ran a two-day computer camp in Manahari Rural Municipality.',
-    tags: ['Nonprofit', 'Education', 'Nepal'],
+    tags: ['Python', 'Pygame', 'HTML', 'CSS', 'JavaScript'],
     href: 'archive/himalayan-hacks/',
     archived: true,
   },

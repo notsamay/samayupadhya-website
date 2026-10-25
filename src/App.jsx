@@ -32,75 +32,48 @@ function Hero() {
   )
 }
 
-function Section({ id, eyebrow, title, children }) {
+function Section({ id, title, children }) {
   return (
-    <section id={id} className="scroll-mt-20 py-20 sm:py-28">
-      <p className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-500">{eyebrow}</p>
-      <h2 className="mt-3 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">{title}</h2>
+    <section id={id} className="scroll-mt-20 py-20 sm:py-24">
+      <h2 className="font-display text-4xl font-bold tracking-tight text-white">{title}</h2>
       <div className="mt-10">{children}</div>
     </section>
   )
 }
 
-const card =
-  'rounded-xl border border-white/[0.08] bg-white/[0.03] transition-colors hover:border-white/20 hover:bg-white/[0.05]'
+const textLink = 'text-white underline decoration-white/30 underline-offset-4 transition-colors hover:decoration-white'
 
-const arrow =
-  'text-neutral-500 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-white'
-
-// A text-only entry: title and year, details, then a link.
+// A plain entry: title and year, what it was, what it was built with, then a link.
 // Archived entries open old copies hosted on this site; everything else opens in a new tab.
 function Entry({ p }) {
   return (
-    <li className="border-t border-white/[0.08] py-8">
-      <div className="flex items-baseline gap-3">
-        <h4 className="font-display text-2xl font-bold tracking-tight text-white">{p.title}</h4>
-        {p.year && <span className="font-mono text-xs text-[#d23a4f]">{p.year}</span>}
-        {p.status && (
-          <span className="rounded border border-[#d23a4f]/50 px-1.5 py-0.5 font-mono text-[11px] uppercase tracking-wider text-[#d23a4f]">
-            {p.status}
-          </span>
-        )}
-      </div>
-      <div className="mt-3">
-        <p className="leading-relaxed text-neutral-400">{p.description}</p>
-        {p.story && (
-          <div className="mt-5 space-y-3 border-l-2 border-[#a51c30] pl-4 text-[15px] leading-relaxed text-neutral-300">
-            {p.story.map((para) => (
-              <p key={para}>{para}</p>
-            ))}
-          </div>
-        )}
-        {p.tags.length > 0 && (
-          <div className="mt-5">
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-neutral-500">built with</p>
-            <ul className="mt-2 flex flex-wrap gap-2">
-              {p.tags.map((t) => (
-                <li key={t} className="rounded-md bg-white/[0.06] px-2 py-1 font-mono text-xs text-neutral-300">
-                  {t}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-        {p.href && (
-          <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2">
-            <a
-              href={p.archived ? import.meta.env.BASE_URL + p.href : p.href}
-              {...(p.archived ? {} : { target: '_blank', rel: 'noreferrer' })}
-              className="group inline-flex items-center gap-2 rounded-lg border border-white/15 px-4 py-2 text-sm text-white transition-colors hover:border-white/40 hover:bg-white/[0.05]"
-            >
-              {p.linkLabel ?? 'view site'}
-              <span className={arrow}>↗</span>
-            </a>
-            {p.archived && (
-              <span className="font-mono text-xs text-neutral-500">
-                archived copy of the original site, so it may be slightly broken
-              </span>
-            )}
-          </div>
-        )}
-      </div>
+    <li className="border-t border-white/[0.08] py-7">
+      <h4 className="text-lg font-semibold text-white">
+        {p.title}
+        {p.year && <span className="ml-2 font-normal text-neutral-500">{p.year}</span>}
+        {p.status && <span className="ml-2 font-normal text-[#d23a4f]">({p.status})</span>}
+      </h4>
+      <p className="mt-2 leading-relaxed text-neutral-400">{p.description}</p>
+      {p.story && (
+        <div className="mt-4 space-y-3 leading-relaxed text-neutral-300">
+          {p.story.map((para) => (
+            <p key={para}>{para}</p>
+          ))}
+        </div>
+      )}
+      {p.tags.length > 0 && <p className="mt-4 text-sm text-neutral-500">built with {p.tags.join(', ')}</p>}
+      {p.href && (
+        <p className="mt-3 text-sm">
+          <a
+            href={p.archived ? import.meta.env.BASE_URL + p.href : p.href}
+            {...(p.archived ? {} : { target: '_blank', rel: 'noreferrer' })}
+            className={textLink}
+          >
+            {p.linkLabel ?? 'view site'}
+          </a>
+          {p.archived && <span className="text-neutral-500"> (an archived copy, so it may be slightly broken)</span>}
+        </p>
+      )}
     </li>
   )
 }
@@ -108,7 +81,7 @@ function Entry({ p }) {
 function Group({ label, children }) {
   return (
     <div>
-      <h3 className="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-neutral-500">{label}</h3>
+      <h3 className="mb-2 text-sm font-medium text-neutral-500">{label}</h3>
       {children}
     </div>
   )
@@ -122,7 +95,7 @@ export default function App() {
       <LifeTimeline />
 
       <main className="mx-auto max-w-5xl divide-y divide-white/[0.08] px-5">
-        <Section id="projects" eyebrow="work" title="things i've built">
+        <Section id="projects" title="work">
           {/* Initiatives on the left, projects on the right */}
           <div className="grid gap-12 md:grid-cols-2">
             <Group label="initiatives">
@@ -142,37 +115,28 @@ export default function App() {
           </div>
         </Section>
 
-        <Section id="connect" eyebrow="connect" title="let's talk">
-          <div className={`${card} flex flex-col gap-6 p-8 sm:flex-row sm:items-center sm:justify-between`}>
-            <p className="max-w-md text-lg text-neutral-400">
-              have a project in mind, or just want to say hi? my inbox is open.
-            </p>
-            <a
-              href={`mailto:${profile.email}`}
-              className="inline-flex items-center justify-center rounded-lg bg-white px-5 py-3 text-sm font-medium text-neutral-950 transition-colors hover:bg-neutral-200"
-            >
+        <Section id="connect" title="contact">
+          <p className="max-w-xl text-lg leading-relaxed text-neutral-400">
+            the best way to reach me is email, at{' '}
+            <a href={`mailto:${profile.email}`} className={textLink}>
               {profile.email}
             </a>
-          </div>
-          <div className="mt-4 grid gap-4 sm:grid-cols-2">
-            {profile.links.map((l) => (
-              <a
-                key={l.label}
-                href={l.href}
-                target="_blank"
-                rel="noreferrer"
-                className={`${card} group flex items-center justify-between p-5 text-white`}
-              >
-                {l.label}
-                <span className={arrow}>↗</span>
-              </a>
+            . you can also find me on{' '}
+            {profile.links.map((l, i) => (
+              <span key={l.label}>
+                {i > 0 && ' and '}
+                <a href={l.href} target="_blank" rel="noreferrer" className={textLink}>
+                  {l.label}
+                </a>
+              </span>
             ))}
-          </div>
+            .
+          </p>
         </Section>
       </main>
 
       <footer className="border-t border-white/[0.08]">
-        <div className="mx-auto flex max-w-5xl justify-between px-5 py-8 font-mono text-xs text-neutral-600">
+        <div className="mx-auto flex max-w-5xl justify-between px-5 py-8 text-sm text-neutral-600">
           <span>
             © {new Date().getFullYear()} <span className="normal-case">{profile.name}</span>
           </span>
