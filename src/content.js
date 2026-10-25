@@ -33,18 +33,6 @@ export const initiatives = [
     href: 'https://renew222.org',
   },
   {
-    title: 'Himalayan Hacks',
-    year: '2023',
-    description:
-      'Computer education and basic programming for kids in rural Nepal, run with the Ek Artha Foundation. We raised around $10,000, donated a computer lab, and ran a two-day computer camp in Manahari Rural Municipality.',
-    tags: ['Nonprofit', 'Education', 'Nepal'],
-    href: 'archive/himalayan-hacks/',
-    archived: true,
-  },
-]
-
-export const projects = [
-  {
     title: 'Castaways',
     year: '2024',
     description:
@@ -59,6 +47,18 @@ export const projects = [
     archived: true,
   },
   {
+    title: 'Himalayan Hacks',
+    year: '2023',
+    description:
+      'Computer education and basic programming for kids in rural Nepal, run with the Ek Artha Foundation. We raised around $10,000, donated a computer lab, and ran a two-day computer camp in Manahari Rural Municipality.',
+    tags: ['Nonprofit', 'Education', 'Nepal'],
+    href: 'archive/himalayan-hacks/',
+    archived: true,
+  },
+]
+
+export const projects = [
+  {
     title: 'Dreamer',
     year: '2024',
     description:
@@ -66,13 +66,6 @@ export const projects = [
     tags: ['Flutter', 'Swift'],
     href: 'https://github.com/notsamay/DreamerCAC',
     linkLabel: 'view code',
-  },
-  {
-    title: 'Barisha Jewellery',
-    description:
-      'A website for Barisha, a handcrafted jewelry business in Sydney. It showcases one-of-a-kind necklace and earring sets, tells the story behind the craft, and lets customers enquire about each piece.',
-    tags: ['Next.js', 'Tailwind'],
-    href: 'https://barishajewellery.vercel.app',
   },
 ]
 
