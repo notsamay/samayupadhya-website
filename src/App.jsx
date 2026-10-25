@@ -59,23 +59,15 @@ function EntryLink({ p }) {
   )
 }
 
-// An initiative, written out: title and year, what it is, its story, tools, then a link.
+// An initiative, written out: title and year, what it is, tools, then a link.
 function Entry({ p }) {
   return (
     <li className="border-t border-white/[0.08] py-7">
       <h4 className="text-lg font-semibold text-white">
         {p.title}
         {p.year && <span className="ml-2 font-normal text-neutral-500">{p.year}</span>}
-        {p.status && <span className="ml-2 font-normal text-white">({p.status})</span>}
       </h4>
       <p className="mt-2 leading-relaxed text-neutral-300">{p.description}</p>
-      {p.story && (
-        <div className="mt-4 space-y-3 leading-relaxed text-white">
-          {p.story.map((para) => (
-            <p key={para}>{para}</p>
-          ))}
-        </div>
-      )}
       {p.tags.length > 0 && <p className="mt-4 text-sm text-neutral-500">built with {p.tags.join(', ')}</p>}
       {p.href && (
         <p className="mt-3 text-sm">
@@ -104,30 +96,33 @@ function ProjectRow({ p }) {
   )
 }
 
-// A failure, spread across the page: what it was on the left, what it taught me on the right.
+// A failure as a feature block: the takeaway as a pull quote, a short summary, then the lessons side by side.
 function ScarEntry({ p }) {
   return (
-    <li className="grid gap-6 border-t border-white/[0.08] py-7 md:grid-cols-2 md:gap-12">
-      <div>
-        <h4 className="text-lg font-semibold text-white">
-          {p.title}
-          {p.year && <span className="ml-2 font-normal text-neutral-500">{p.year}</span>}
-          {p.status && <span className="ml-2 font-normal text-white">({p.status})</span>}
-        </h4>
-        <p className="mt-2 leading-relaxed text-neutral-300">{p.description}</p>
-        {p.tags.length > 0 && <p className="mt-4 text-sm text-neutral-500">built with {p.tags.join(', ')}</p>}
-        {p.href && (
-          <p className="mt-3 text-sm">
-            <EntryLink p={p} />
-            {p.archived && <span className="text-neutral-500"> (an archived copy, so it may be slightly broken)</span>}
-          </p>
-        )}
+    <li className="border-t border-white/[0.08] pt-10">
+      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+        <h4 className="font-display text-3xl font-bold tracking-tight text-white">{p.title}</h4>
+        <span className="text-neutral-500">{p.year}</span>
+        <span className="text-white">({p.status})</span>
       </div>
-      <div className="space-y-3 leading-relaxed text-white">
-        {p.story.map((para) => (
-          <p key={para}>{para}</p>
+      <blockquote className="mt-6 max-w-3xl font-display text-2xl font-medium leading-snug tracking-tight text-white sm:text-3xl">
+        “{p.quote}”
+      </blockquote>
+      <p className="mt-6 max-w-3xl leading-relaxed text-neutral-300">{p.description}</p>
+      <ol className="mt-10 grid gap-8 sm:grid-cols-3 sm:gap-10">
+        {p.lessons.map((l, i) => (
+          <li key={l.title} className="border-t border-white/20 pt-4">
+            <p className="text-sm text-neutral-500">0{i + 1}</p>
+            <h5 className="mt-1 text-lg font-semibold text-white">{l.title}</h5>
+            <p className="mt-2 leading-relaxed text-neutral-300">{l.body}</p>
+          </li>
         ))}
-      </div>
+      </ol>
+      <p className="mt-10 text-sm text-neutral-500">
+        built with {p.tags.join(', ')} ·{' '}
+        <EntryLink p={p} />
+        <span> (an archived copy, so it may be slightly broken)</span>
+      </p>
     </li>
   )
 }
