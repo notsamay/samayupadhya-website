@@ -48,16 +48,16 @@ const card =
 const arrow =
   'text-neutral-500 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-white'
 
-// A text-only entry: title and year on the left, details and a link on the right.
+// A text-only entry: title and year, details, then a link.
 // Archived entries open old copies hosted on this site; everything else opens in a new tab.
 function Entry({ p }) {
   return (
-    <li className="grid gap-4 border-t border-white/[0.08] py-10 md:grid-cols-[220px_1fr] md:gap-10">
-      <div>
+    <li className="border-t border-white/[0.08] py-8">
+      <div className="flex items-baseline gap-3">
         <h4 className="font-display text-2xl font-bold tracking-tight text-white">{p.title}</h4>
-        {p.year && <p className="mt-1 font-mono text-xs text-[#d23a4f]">{p.year}</p>}
+        {p.year && <span className="font-mono text-xs text-[#d23a4f]">{p.year}</span>}
       </div>
-      <div className="max-w-2xl">
+      <div className="mt-3">
         <p className="leading-relaxed text-neutral-400">{p.description}</p>
         {p.story && (
           <div className="mt-5 space-y-3 border-l-2 border-[#a51c30] pl-4 text-[15px] leading-relaxed text-neutral-300">
@@ -89,7 +89,7 @@ function Entry({ p }) {
 
 function Group({ label, children }) {
   return (
-    <div className="mt-12 first:mt-0">
+    <div>
       <h3 className="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-neutral-500">{label}</h3>
       {children}
     </div>
@@ -105,20 +105,23 @@ export default function App() {
 
       <main className="mx-auto max-w-5xl divide-y divide-white/[0.08] px-5">
         <Section id="projects" eyebrow="work" title="things i've built">
-          <Group label="initiatives">
-            <ul>
-              {initiatives.map((p) => (
-                <Entry key={p.title} p={p} />
-              ))}
-            </ul>
-          </Group>
-          <Group label="projects">
-            <ul>
-              {projects.map((p) => (
-                <Entry key={p.title} p={p} />
-              ))}
-            </ul>
-          </Group>
+          {/* Initiatives on the left, projects on the right */}
+          <div className="grid gap-12 md:grid-cols-2">
+            <Group label="initiatives">
+              <ul>
+                {initiatives.map((p) => (
+                  <Entry key={p.title} p={p} />
+                ))}
+              </ul>
+            </Group>
+            <Group label="projects">
+              <ul>
+                {projects.map((p) => (
+                  <Entry key={p.title} p={p} />
+                ))}
+              </ul>
+            </Group>
+          </div>
         </Section>
 
         <Section id="connect" eyebrow="connect" title="let's talk">

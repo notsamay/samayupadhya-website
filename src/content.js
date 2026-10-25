@@ -98,7 +98,7 @@ export const timeline = [
     meta: 'first lego league',
     title: 'Best programming',
     body: "I kept making games on my own and joined FIRST LEGO League, where teams design, build, and program LEGO robots to complete missions. Our team won the programming award at the South Carolina state championship.",
-    photo: { src: null, caption: 'fll state championship' },
+    photo: { src: '/timeline/web/fll.jpg', caption: 'fll state championship' },
   },
   {
     year: '2020–22',
