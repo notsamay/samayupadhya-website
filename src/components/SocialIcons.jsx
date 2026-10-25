@@ -38,7 +38,7 @@ export default function SocialIcons({ className = '' }) {
             aria-label={item.label}
             title={item.label}
             {...(item.external ? { target: '_blank', rel: 'noreferrer' } : {})}
-            className="block text-[#f5ead2]/80 hover:text-[#f5ead2]"
+            className="block text-white/80 hover:text-white"
           >
             <Icon label={item.label} />
           </a>

@@ -12,7 +12,7 @@ function Hero() {
       <div aria-hidden="true" className="hero-fade pointer-events-none absolute inset-x-0 bottom-0 h-[55svh]" />
       <div className="relative flex min-h-svh items-center justify-center px-5 py-28 sm:px-8">
         <div className="flex flex-col">
-          <h1 className="whitespace-nowrap font-title text-[clamp(2.5rem,7.5vw,6.5rem)] font-bold normal-case leading-[0.9] tracking-[-0.03em] text-[#f5ead2]">
+          <h1 className="whitespace-nowrap font-title text-[clamp(2.5rem,7.5vw,6.5rem)] font-bold normal-case leading-[0.9] tracking-[-0.03em] text-white">
             {profile.name}
           </h1>
           {/* Pixel-dot divider, echoing the dithered pattern behind it */}
@@ -21,7 +21,7 @@ function Hero() {
             className="mt-7 h-[3px] bg-[linear-gradient(to_right,rgb(245_234_210/0.45)_0_3px,transparent_3px)] bg-[length:9px_3px] bg-repeat-x"
           />
           <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-            <p className="max-w-[42ch] text-balance font-sub text-[clamp(0.95rem,1.15vw,1.0625rem)] leading-relaxed text-[#f5ead2]/80">
+            <p className="max-w-[42ch] text-balance font-sub text-[clamp(0.95rem,1.15vw,1.0625rem)] leading-relaxed text-white/80">
               {profile.intro}
             </p>
             <SocialIcons className="sm:pb-1" />
@@ -41,7 +41,7 @@ function Section({ id, title, children }) {
   )
 }
 
-const textLink = 'text-white underline decoration-white/30 underline-offset-4 transition-colors hover:decoration-white'
+const textLink = 'text-white underline decoration-white/40 underline-offset-4 transition-colors hover:decoration-white'
 
 // A plain entry: title and year, what it was, what it was built with, then a link.
 // Archived entries open old copies hosted on this site; everything else opens in a new tab.
@@ -51,11 +51,11 @@ function Entry({ p }) {
       <h4 className="text-lg font-semibold text-white">
         {p.title}
         {p.year && <span className="ml-2 font-normal text-neutral-500">{p.year}</span>}
-        {p.status && <span className="ml-2 font-normal text-[#d23a4f]">({p.status})</span>}
+        {p.status && <span className="ml-2 font-normal text-white">({p.status})</span>}
       </h4>
-      <p className="mt-2 leading-relaxed text-neutral-400">{p.description}</p>
+      <p className="mt-2 leading-relaxed text-neutral-300">{p.description}</p>
       {p.story && (
-        <div className="mt-4 space-y-3 leading-relaxed text-neutral-300">
+        <div className="mt-4 space-y-3 leading-relaxed text-white">
           {p.story.map((para) => (
             <p key={para}>{para}</p>
           ))}
@@ -89,7 +89,7 @@ function Group({ label, children }) {
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-ink font-sans lowercase text-neutral-300 antialiased selection:bg-[#a51c30] selection:text-white">
+    <div className="min-h-screen bg-ink font-sans lowercase text-neutral-300 antialiased selection:bg-white selection:text-black">
       <Header />
       <Hero />
       <LifeTimeline />
@@ -116,7 +116,7 @@ export default function App() {
         </Section>
 
         <Section id="connect" title="contact">
-          <p className="max-w-xl text-lg leading-relaxed text-neutral-400">
+          <p className="max-w-xl text-lg leading-relaxed text-neutral-300">
             the best way to reach me is email, at{' '}
             <a href={`mailto:${profile.email}`} className={textLink}>
               {profile.email}
@@ -136,7 +136,7 @@ export default function App() {
       </main>
 
       <footer className="border-t border-white/[0.08]">
-        <div className="mx-auto flex max-w-5xl justify-between px-5 py-8 text-sm text-neutral-600">
+        <div className="mx-auto flex max-w-5xl justify-between px-5 py-8 text-sm text-neutral-500">
           <span>
             © {new Date().getFullYear()} <span className="normal-case">{profile.name}</span>
           </span>

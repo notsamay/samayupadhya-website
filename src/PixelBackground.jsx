@@ -1,9 +1,9 @@
 import { useEffect, useRef } from 'react'
 
-// Harvard crimson (#A51C30) shades, darkest to lightest.
-const PALETTE = ['#2e060c', '#4f0b16', '#7a1424', '#a51c30', '#b9343f']
+// Grayscale shades, darkest to lightest.
+const PALETTE = ['#000000', '#121212', '#262626', '#3d3d3d', '#5a5a5a']
 // Only snow caps can reach this one, so the peaks catch the light.
-const SNOW = '#d9676b'
+const SNOW = '#9a9a9a'
 
 // 4x4 ordered-dither (Bayer) matrix — the classic early-computer look.
 const BAYER = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5].map((v) => v / 16 - 0.5)

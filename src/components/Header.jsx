@@ -15,7 +15,7 @@ export default function Header() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 text-sm sm:px-8">
         <a href="#top" className="relative h-5">
           <span
-            className={`absolute left-0 top-0 whitespace-nowrap font-mono text-xs leading-5 tracking-[0.2em] text-[#f5ead2]/80 transition-opacity duration-300 ${atTop ? 'opacity-100' : 'opacity-0'}`}
+            className={`absolute left-0 top-0 whitespace-nowrap font-mono text-xs leading-5 tracking-[0.2em] text-white/80 transition-opacity duration-300 ${atTop ? 'opacity-100' : 'opacity-0'}`}
           >
             portfolio ©{new Date().getFullYear()}
           </span>
@@ -30,7 +30,7 @@ export default function Header() {
             <a
               key={id}
               href={`#${id}`}
-              className={`hidden transition-colors sm:inline ${atTop ? 'text-[#f5ead2]/80 hover:text-white' : 'text-neutral-400 hover:text-white'}`}
+              className={`hidden transition-colors sm:inline ${atTop ? 'text-white/80 hover:text-white' : 'text-neutral-400 hover:text-white'}`}
             >
               {id}
             </a>
